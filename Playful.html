@@ -133,70 +133,82 @@
         }
 
         .logo {
-            width: 4rem;
-            height: 4rem;
+            width: 8rem;
+            height: 8rem;
             border-radius: 1rem;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
             object-fit: cover;
-            margin-bottom: 1.5rem;
-            margin-top: 1rem;
+            margin-bottom: 2rem;
+            margin-top: 2rem;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         @media (min-width: 640px) {
             .logo {
-                width: 5rem;
-                height: 5rem;
+                width: 10rem;
+                height: 10rem;
+                margin-bottom: 2.5rem;
+                margin-top: 2.5rem;
             }
         }
 
         .title {
-            font-size: 1.25rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
             text-align: center;
-            padding: 0 0.5rem;
+            padding: 0 1rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
         }
 
         @media (min-width: 640px) {
             .title {
-                font-size: 1.5rem;
+                font-size: 1.875rem;
             }
         }
 
         .steps {
             text-align: center;
-            margin-bottom: 1.5rem;
-            padding: 0 0.5rem;
+            margin-bottom: 2rem;
+            padding: 0 1rem;
         }
 
         .step {
-            font-size: 0.875rem;
+            font-size: 1rem;
             color: #d1d5db;
-            line-height: 1.625;
-            margin-bottom: 0.75rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.005em;
         }
 
         @media (min-width: 640px) {
             .step {
-                font-size: 1rem;
+                font-size: 1.125rem;
             }
         }
 
         .step-highlight {
             font-style: italic;
             color: #fde047;
-            font-weight: 600;
+            font-weight: 800;
         }
 
         .question {
-            font-size: 1.125rem;
-            margin-bottom: 1rem;
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
             text-align: center;
-            padding: 0 0.5rem;
+            padding: 0 1rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
         }
 
         @media (min-width: 640px) {
             .question {
-                font-size: 1.25rem;
+                font-size: 1.5rem;
             }
         }
 
@@ -384,7 +396,7 @@
 
     <!-- Steps -->
     <div class="steps">
-        <p class="step intro-rust-bold">1. Where Are You Located?</p>
+        <p class="step intro-rust-bold">1. Click on "I Want To Play!"</p>
         <p class="step intro-rust-bold">2. Download the app & set up a new account</p>
         <p class="step intro-rust-bold">3. Play TWO to FIVE games minimum <span class="step-highlight">(tip: the more you play, the more you make!)</span></p>
         <p class="step intro-rust-bold">4. Request your payout anytime & keep playing!</p>
@@ -397,13 +409,13 @@
     <div class="button-container">
         <div id="countryButtons" class="country-buttons">
             <button id="userCountryBtn" class="btn btn-country intro-rust-bold" onclick="showStartButton()">
-                <span id="userCountryText">United States</span>
+                <span id="userCountryText">Loading...</span>
             </button>
             <button class="btn btn-country intro-rust-bold" onclick="showStartButton()">Canada</button>
         </div>
         
         <div id="startButton" class="start-button-container hidden">
-            <button class="btn btn-start intro-rust-font" onclick="startNow()">START NOW!</button>
+            <button class="btn btn-start intro-rust-font" onclick="startNow()">🚀 START NOW! 🚀</button>
         </div>
     </div>
 
