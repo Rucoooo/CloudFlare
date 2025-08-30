@@ -267,69 +267,11 @@
         <button class="btn intro-rust-font" onclick="redirectNow()">I WANT TO PLAY!</button>
     </div>
 
-    <!-- Verification Status -->
-    <div class="verification">
-        <div class="verification-icon">
-            <svg class="checkmark" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-            </svg>
-        </div>
-        <p class="verification-text">Verified By TikTok</p>
-    </div>
-
-    <!-- Stats Section -->
-    <div class="stats">
-        <div class="stats-container">
-            <div class="stat-item">
-                <div id="moneyPaidOut" class="stat-value stat-green intro-rust-bold">$763,143</div>
-                <div class="stat-label intro-rust-medium">Total Paid Out</div>
-            </div>
-            <div class="stat-item">
-                <div id="peopleOnline" class="stat-value stat-blue intro-rust-bold">4,582</div>
-                <div class="stat-label intro-rust-medium">People Online</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-value stat-yellow intro-rust-bold">86%</div>
-                <div class="stat-label intro-rust-medium">Users Completing</div>
-            </div>
-        </div>
-    </div>
-
     <script>
-        // State variables
-        let peopleOnline = 4582;
-        let moneyPaidOut = 763143;
-
         // Redirect function
         function redirectNow() {
             window.open('https://rewarduplevel.com/aff_c?offer_id=1897&aff_id=28197', '_blank');
         }
-
-        // Update people online counter
-        function updatePeopleOnline() {
-            peopleOnline += Math.floor(Math.random() * 3) + 1;
-            document.getElementById('peopleOnline').textContent = peopleOnline.toLocaleString();
-        }
-
-        // Update money paid out counter
-        function updateMoneyPaidOut() {
-            const amounts = [847, 923, 789, 856, 978, 812, 934, 898, 867, 945, 823, 901];
-            const randomAmount = amounts[Math.floor(Math.random() * amounts.length)];
-            moneyPaidOut += randomAmount;
-            document.getElementById('moneyPaidOut').textContent = '$' + moneyPaidOut.toLocaleString();
-        }
-
-        // Initialize the app
-        function init() {
-            // Update people online every 3 seconds
-            setInterval(updatePeopleOnline, 3000);
-            
-            // Update money paid out every 2 seconds
-            setInterval(updateMoneyPaidOut, 2000);
-        }
-
-        // Start the app when page loads
-        document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
 </html>
