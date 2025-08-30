@@ -2,674 +2,276 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="description" content="Start earning money today with Swagbucks! Complete surveys, watch videos, and shop online to earn real cash and gift cards.">
-    <meta name="keywords" content="Swagbucks, earn money, surveys, gift cards, cash rewards, mobile app">
-    <meta name="robots" content="noindex, nofollow">
-    <title>Swagbucks - Start Earning Money Today</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#1e40af">
+    <title>Create Beautiful Landing Page with Smooth Transitions</title>
     
-    <!-- Preload critical fonts -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
-        /* CSS Reset and Base Styles - Mobile First */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         html {
-            font-size: 16px;
             -webkit-text-size-adjust: 100%;
             -webkit-tap-highlight-color: transparent;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
+            font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
-        
+
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(180deg, #1e3a8a 0%, #3b82f6 40%, #06b6d4 100%);
-            min-height: 100vh;
-            color: #1f2937;
-            line-height: 1.5;
-            overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            position: relative;
-        }
-        
-        /* Mobile Container - Optimized for touch */
-        .container {
-            max-width: 100%;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Header Section - Mobile Optimized */
-        .header {
-            padding: 20px 0 16px;
-            text-align: center;
-            position: relative;
-            z-index: 10;
-        }
-        
-        .logo-pill {
-            display: inline-flex;
+            touch-action: manipulation;
+            font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #111827 0%, #1e40af 50%, #111827 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50px;
-            padding: 14px 24px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            transform: translateY(0);
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .logo-pill:active {
-            transform: translateY(2px);
-        }
-        
-        .dollar-icon {
-            width: 20px;
-            height: 20px;
-            margin-right: 12px;
-            fill: #059669;
-        }
-        
-        .logo-text {
-            font-size: 18px;
-            font-weight: 700;
-            background: linear-gradient(135deg, #1e40af, #059669);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: 1px;
-        }
-        
-        /* Hero Section - Mobile First */
-        .hero {
-            padding: 20px 0 24px;
-            text-align: center;
+            padding: 1rem;
             position: relative;
-            z-index: 9;
+            overflow-x: hidden;
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
+            padding-left: env(safe-area-inset-left);
+            padding-right: env(safe-area-inset-right);
         }
-        
-        .hero-title {
-            font-size: 2.5rem;
+
+        .intro-rust-font {
+            font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             font-weight: 800;
-            color: white;
-            margin-bottom: 20px;
+            letter-spacing: -0.02em;
             line-height: 1.1;
-            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            animation: slideInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
-        .hero-subtitle {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            gap: 12px;
-            animation: slideInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
-        }
-        
-        .money-icon {
-            font-size: 1.8rem;
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-        }
-        
-        .reward-text {
-            font-size: 1.4rem;
+
+        .intro-rust-medium {
+            font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             font-weight: 700;
-            background: linear-gradient(135deg, #fbbf24, #f59e0b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            letter-spacing: -0.01em;
+            line-height: 1.2;
         }
-        
-        .hero-description {
-            font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 24px;
-            font-weight: 400;
-            line-height: 1.6;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            animation: slideInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s both;
+
+        .intro-rust-bold {
+            font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.015em;
+            line-height: 1.3;
         }
-        
-        /* How It Works Section - Mobile Optimized */
-        .how-it-works {
-            padding: 24px 0 28px;
-            position: relative;
-            z-index: 8;
-        }
-        
-        .section-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 24px;
-            color: white;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            animation: slideInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.6s both;
-        }
-        
-        .steps-container {
-            max-width: 100%;
-            margin: 0 auto;
-        }
-        
-        .step {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 16px;
-            padding: 18px;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            transform: translateY(20px);
-            opacity: 0;
-            animation: slideInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .step::before {
-            content: '';
+
+        .floating-bg {
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
-            transition: left 0.6s ease;
-        }
-        
-        .step:active {
-            transform: translateY(2px) scale(0.98);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-        }
-        
-        .step:active::before {
-            left: 100%;
-        }
-        
-        .step:nth-child(1) { animation-delay: 0.8s; }
-        .step:nth-child(2) { animation-delay: 1.0s; }
-        .step:nth-child(3) { animation-delay: 1.2s; }
-        .step:nth-child(4) { animation-delay: 1.4s; }
-        
-        .step-number {
-            flex-shrink: 0;
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, #1e40af, #3b82f6);
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-right: 18px;
-            box-shadow: 0 4px 16px rgba(30, 64, 175, 0.4);
-            position: relative;
-            z-index: 2;
+            pointer-events: none;
         }
-        
-        .step-content {
-            flex: 1;
-            padding-top: 8px;
-            position: relative;
-            z-index: 2;
+
+        .floating-1 {
+            top: 4rem;
+            left: 1rem;
+            width: 3rem;
+            height: 3rem;
+            background: rgba(59, 130, 246, 0.1);
+            animation: pulse 2s infinite;
         }
-        
-        .step-text {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #1f2937;
-            margin-bottom: 6px;
-            line-height: 1.4;
+
+        .floating-2 {
+            top: 8rem;
+            right: 1rem;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: rgba(34, 197, 94, 0.1);
+            animation: bounce 2s infinite;
         }
-        
-        .step-subtext {
-            font-size: 0.9rem;
-            color: #6b7280;
-            font-weight: 400;
-            line-height: 1.5;
+
+        .floating-3 {
+            bottom: 8rem;
+            left: 1rem;
+            width: 2rem;
+            height: 2rem;
+            background: rgba(59, 130, 246, 0.1);
+            animation: ping 2s infinite;
         }
-        
-        /* CTA Section - Mobile Optimized */
-        .cta-section {
-            padding: 28px 0 32px;
-            text-align: center;
-            position: relative;
-            z-index: 7;
+
+        .floating-4 {
+            bottom: 4rem;
+            right: 1rem;
+            width: 3.5rem;
+            height: 3.5rem;
+            background: rgba(234, 179, 8, 0.1);
+            animation: pulse 2s infinite;
         }
-        
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #f59e0b, #eab308);
-            color: white;
-            font-size: 1.1rem;
-            font-weight: 700;
-            padding: 20px 40px;
-            border: none;
-            border-radius: 50px;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            box-shadow: 0 8px 32px rgba(245, 158, 11, 0.4);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            width: 100%;
-            max-width: 340px;
-            position: relative;
-            overflow: hidden;
-            transform: translateY(20px);
-            opacity: 0;
-            animation: slideInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 1.6s forwards;
-            -webkit-tap-highlight-color: transparent;
+
+        @media (min-width: 640px) {
+            .floating-1 { top: 5rem; left: 2.5rem; width: 5rem; height: 5rem; }
+            .floating-2 { top: 10rem; right: 5rem; width: 4rem; height: 4rem; }
+            .floating-3 { bottom: 10rem; left: 5rem; width: 3rem; height: 3rem; }
+            .floating-4 { bottom: 5rem; right: 2.5rem; width: 6rem; height: 6rem; }
         }
-        
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.6s ease;
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
-        
-        .cta-button:active {
-            transform: translateY(2px) scale(0.98);
-            box-shadow: 0 4px 16px rgba(245, 158, 11, 0.6);
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-25%); }
         }
-        
-        .cta-button:active::before {
-            left: 100%;
+
+        @keyframes ping {
+            0% { transform: scale(1); opacity: 1; }
+            75%, 100% { transform: scale(2); opacity: 0; }
         }
-        
-        .cta-microcopy {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.8);
-            margin-top: 12px;
-            font-weight: 500;
-            animation: slideInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 1.8s both;
-        }
-        
-        /* Footer Section - Mobile Optimized */
-        .footer {
-            padding: 24px 0 20px;
-            text-align: center;
-            margin-top: 16px;
-            position: relative;
-            z-index: 6;
-        }
-        
-        .footer-logo {
-            opacity: 0.7;
-            margin-bottom: 16px;
-            animation: slideInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 2.0s both;
-        }
-        
-        .footer-logo-text {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.8);
-            font-weight: 600;
-        }
-        
-        .geo-restriction {
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.7);
-            font-weight: 500;
-            margin-bottom: 12px;
-            line-height: 1.5;
-            max-width: 300px;
+
+        .logo {
+            width: 8rem;
+            height: 8rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            object-fit: cover;
+            margin-bottom: 2rem;
+            margin-top: 2rem;
+            display: block;
             margin-left: auto;
             margin-right: auto;
-            animation: slideInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 2.2s both;
         }
-        
-        .legal-links {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 16px;
-            flex-wrap: wrap;
-            animation: slideInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 2.4s both;
+
+        @media (min-width: 640px) {
+            .logo {
+                width: 10rem;
+                height: 10rem;
+                margin-bottom: 2.5rem;
+                margin-top: 2.5rem;
+            }
         }
-        
-        .legal-link {
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.6);
-            text-decoration: none;
-            transition: color 0.3s ease;
-            padding: 8px;
+
+        .title {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            padding: 0 1rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+        }
+
+        @media (min-width: 640px) {
+            .title {
+                font-size: 1.875rem;
+            }
+        }
+
+        .steps {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 0 1rem;
+        }
+
+        .step {
+            font-size: 1rem;
+            color: #d1d5db;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.005em;
+        }
+
+        @media (min-width: 640px) {
+            .step {
+                font-size: 1.125rem;
+            }
+        }
+
+        .step-highlight {
+            font-style: italic;
+            color: #fde047;
+            font-weight: 800;
+        }
+
+        .button-container {
+            width: 100%;
+            max-width: 24rem;
+            padding: 0 1rem;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0.75rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1.125rem;
+            min-height: 4rem;
+            touch-action: manipulation;
             -webkit-tap-highlight-color: transparent;
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: white;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            animation: pulse 2s infinite;
         }
-        
-        .legal-link:active {
-            color: rgba(255, 255, 255, 0.9);
-        }
-        
-        .legal-separator {
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 0.8rem;
-        }
-        
-        /* Smooth Animations */
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+
+        @media (min-width: 640px) {
+            .btn {
+                font-size: 1.25rem;
+                padding: 1.5rem 2rem;
+                min-height: 4.5rem;
             }
         }
-        
-        @keyframes bounceIn {
-            0% {
-                opacity: 0;
-                transform: scale(0.3);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1.05);
-            }
-            70% {
-                transform: scale(0.9);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
+
+        .btn:hover {
+            background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 25px 30px -5px rgba(0, 0, 0, 0.2);
         }
-        
-        /* Performance Optimizations for Mobile */
-        .step, .cta-button, .logo-pill {
-            will-change: transform;
-            -webkit-transform: translateZ(0);
-            transform: translateZ(0);
-        }
-        
-        /* Accessibility and Reduced Motion */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-            
-            html {
-                scroll-behavior: auto;
-            }
-        }
-        
-        /* Focus styles for accessibility */
-        .cta-button:focus {
-            outline: 3px solid #fbbf24;
-            outline-offset: 3px;
-        }
-        
-        .legal-link:focus {
-            outline: 2px solid rgba(255, 255, 255, 0.6);
-            outline-offset: 2px;
-        }
-        
-        /* Mobile-specific optimizations */
-        @supports (-webkit-touch-callout: none) {
-            body {
-                -webkit-overflow-scrolling: touch;
-            }
-        }
-        
-        /* Prevent zoom on input focus */
-        input, select, textarea {
-            font-size: 16px;
-        }
-        
-        /* Optimize for mobile browsers */
-        body {
-            -webkit-text-size-adjust: 100%;
-            -ms-text-size-adjust: 100%;
+
+        .btn:active {
+            background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+            transform: scale(0.95);
         }
     </style>
 </head>
 <body>
-    <!-- Header Section -->
-    <header class="header">
-        <div class="container">
-            <div class="logo-pill">
-                <svg class="" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15v-1c-1.1 0-2-.9-2-2s.9-2 2-2v-2c-1.1 0-2-.9-2-2s.9-2 2-2V5h2v1c1.1 0 2 .9 2 2s-.9 2-2 2v2c1.1 0 2 .9 2 2s-.9 2-2 2v1h-2zm1-11c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm0 6c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/>
-                </svg>
-                <span class="logo-text">SWAGBUCKS</span>
-            </div>
-        </div>
-    </header>
+    <!-- Floating Background Elements -->
+    <div class="floating-bg floating-1"></div>
+    <div class="floating-bg floating-2"></div>
+    <div class="floating-bg floating-3"></div>
+    <div class="floating-bg floating-4"></div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1 class="hero-title">Start Earning Today!</h1>
-            
-            <div class="hero-subtitle">
-                <span class="money-icon">💰</span>
-                <span class="reward-text">Real Money, Real Fast</span>
-                <span class="money-icon">💰</span>
-            </div>
+    <!-- Logo -->
+    <img src="images/swag.png" alt="Logo" class="logo">
 
-            <p class="hero-description">
-                Join millions who earn cash and gift cards with Swagbucks - the #1 rewards app.
-            </p>
-        </div>
-    </section>
+    <!-- Title -->
+    <h1 class="title intro-rust-medium">Follow the steps below!</h1>
 
-    <!-- How It Works Section -->
-    <section class="how-it-works">
-        <div class="container">
-            <h2 class="section-title">How You'll Start Earning</h2>
-            
-            <div class="steps-container">
-                <!-- Step 1 -->
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <div class="step-text">Download the Swagbucks app 📱</div>
-                        <div class="step-subtext">Free on iOS and Android</div>
-                    </div>
-                </div>
+    <!-- Steps -->
+    <div class="steps">
+        <p class="step intro-rust-bold">1. Click on "I Want To Play!"</p>
+        <p class="step intro-rust-bold">2. Download the app & set up a new account</p>
+        <p class="step intro-rust-bold">3. Play TWO to FIVE games minimum <span class="step-highlight">
+(tip: the more you play, the more you make!)</span></p>
+        <p class="step intro-rust-bold">4. Request your payout anytime & keep playing!</p>
+    </div>
 
-                <!-- Step 2 -->
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <div class="step-text">Complete your profile</div>
-                        <div class="step-subtext">Get matched with the best earning opportunities</div>
-                    </div>
-                </div>
+    <!-- Single Redirect Button -->
+    <div class="button-container">
+        <button class="btn intro-rust-font" onclick="redirectNow()">I WANT TO PLAY!</button>
+    </div>
 
-                <!-- Step 3 -->
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <div class="step-text">Earn through daily activities</div>
-                        <div class="step-subtext">Surveys, videos, shopping, games & more</div>
-                    </div>
-                </div>
-
-                <!-- Step 4 -->
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <div class="step-content">
-                        <div class="step-text">Cash out your earnings</div>
-                        <div class="step-subtext">PayPal cash or gift cards from top brands</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Call-to-Action Section -->
-    <section class="cta-section">
-        <div class="container">
-            <a href="https://rewarrdsgiant.com/aff_c?offer_id=1897&aff_id=28197" class="cta-button" role="button" aria-label="Start earning with Swagbucks">
-                GET SWAGBUCKS NOW
-            </a>
-            <p class="cta-microcopy">Start earning in under 2 minutes.</p>
-        </div>
-    </section>
-
-    <!-- Footer Section -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-logo">
-                <span class="footer-logo-text">SWAGBUCKS</span>
-            </div>
-            
-            <p class="geo-restriction">
-                Available to residents of the US, UK, AU, & CA. Must be 18+ to participate.
-            </p>
-            
-            <div class="legal-links">
-                <a href="#" class="legal-link">Terms of Service</a>
-                <span class="legal-separator">•</span>
-                <a href="#" class="legal-link">Privacy Policy</a>
-                <span class="legal-separator">•</span>
-                <a href="#" class="legal-link">Contact</a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Mobile-Optimized Performance Scripts -->
     <script>
-        // Mobile-specific optimizations
-        document.addEventListener('DOMContentLoaded', function() {
-            // Smooth scrolling with momentum for iOS
-            document.documentElement.style.scrollBehavior = 'smooth';
-            document.body.style.webkitOverflowScrolling = 'touch';
-            
-            // Optimize viewport for mobile
-            const viewport = document.querySelector('meta[name=viewport]');
-            if (viewport) {
-                viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover');
-            }
-            
-            // Enhanced touch feedback for mobile
-            const touchElements = document.querySelectorAll('.cta-button, .step, .logo-pill, .legal-link');
-            
-            touchElements.forEach(element => {
-                element.addEventListener('touchstart', function(e) {
-                    this.style.transition = 'transform 0.1s ease';
-                    if (this.classList.contains('cta-button')) {
-                        this.style.transform = 'translateY(2px) scale(0.98)';
-                    } else if (this.classList.contains('step')) {
-                        this.style.transform = 'translateY(2px) scale(0.98)';
-                    } else {
-                        this.style.transform = 'scale(0.95)';
-                    }
-                }, { passive: true });
-                
-                element.addEventListener('touchend', function(e) {
-                    setTimeout(() => {
-                        this.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
-                        this.style.transform = '';
-                    }, 100);
-                }, { passive: true });
-                
-                element.addEventListener('touchcancel', function(e) {
-                    this.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
-                    this.style.transform = '';
-                }, { passive: true });
-            });
-            
-            // Track CTA button clicks
-            const ctaButton = document.querySelector('.cta-button');
-            if (ctaButton) {
-                ctaButton.addEventListener('click', function(e) {
-                    console.log('CTA button clicked - redirecting to:', this.href);
-                });
-            }
-            
-            // Intersection Observer for smooth animations
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.animationPlayState = 'running';
-                    }
-                });
-            }, observerOptions);
-            
-            // Observe animated elements
-            document.querySelectorAll('.step, .hero-title, .hero-subtitle, .hero-description').forEach(el => {
-                observer.observe(el);
-            });
-        });
-
-        // Optimized viewport height fix for mobile browsers
-        function setVH() {
-            const vh = window.innerHeight * 0.01;
-            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        // Redirect function
+        function redirectNow() {
+            window.open('https://rewarduplevel.com/aff_c?offer_id=1897&aff_id=28197', '_blank');
         }
-        
-        setVH();
-        
-        // Throttled resize handler for better performance
-        let resizeTimeout;
-        window.addEventListener('resize', function() {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(setVH, 100);
-        }, { passive: true });
-        
-        window.addEventListener('orientationchange', function() {
-            setTimeout(setVH, 100);
-        }, { passive: true });
-        
-        // Prevent zoom on double tap
-        let lastTouchEnd = 0;
-        document.addEventListener('touchend', function(event) {
-            const now = (new Date()).getTime();
-            if (now - lastTouchEnd <= 300) {
-                event.preventDefault();
-            }
-            lastTouchEnd = now;
-        }, { passive: false });
-        
-        // Optimize scroll performance
-        let ticking = false;
-        function updateScrollEffects() {
-            // Add any scroll-based effects here if needed
-            ticking = false;
-        }
-        
-        window.addEventListener('scroll', function() {
-            if (!ticking) {
-                requestAnimationFrame(updateScrollEffects);
-                ticking = true;
-            }
-        }, { passive: true });
     </script>
 </body>
 </html>
