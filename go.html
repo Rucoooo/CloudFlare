@@ -264,8 +264,16 @@
 
     <!-- Single Redirect Button -->
     <div class="button-container">
+        <!-- keep the same text -->
         <button class="btn intro-rust-font" onclick="redirectNow()">I WANT TO PLAY!</button>
     </div>
+
+    <script>
+    // Redirect action for the button
+    function redirectNow() {
+        window.open('/go', '_blank'); 
+        // /go will forward to your affiliate link via Cloudflare
+    }
 
     <script>
 // Start now action
