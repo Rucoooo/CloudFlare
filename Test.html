@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Playful Rewards</title>
+  <style>
+    :root{
+      --purple: #5A36FF;
+      --purple-dark:#3C22C7;
+      --gold:   #FFC83D;
+      --bg-start:#0d0a16;
+      --bg-mid:#1a1233;
+      --bg-end:#0d0a16;
+      --btn-shadow: rgba(90,54,255,0.35);
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Inter,sans-serif;
+      background: radial-gradient(1200px 600px at 50% -200px, #241552 0%, transparent 70%),
+                  linear-gradient(135deg,var(--bg-start),var(--bg-mid) 55%,var(--bg-end));
+      color:#fff; min-height:100vh; overflow-x:hidden; position:relative;
+    }
+    .bg-float{position:absolute;border-radius:50%;filter:blur(24px);opacity:.25;pointer-events:none;z-index:1;animation:float 6s ease-in-out infinite}
+    .bg-float-1{top:80px;left:40px;width:120px;height:120px;background:var(--purple)}
+    .bg-float-2{top:160px;right:64px;width:90px;height:90px;background:var(--gold);animation-delay:1s;opacity:.18}
+    .bg-float-3{bottom:128px;left:80px;width:70px;height:70px;background:var(--purple);animation-delay:2s}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    .top-nav{
+      position:fixed; inset:0 0 auto 0; height:64px;
+      background:rgba(8,6,18,.35); backdrop-filter: blur(12px);
+      border-bottom:1px solid rgba(255,255,255,.08); z-index:50;
+    }
+    .nav-content{max-width:1200px;margin:0 auto;padding:0 1rem;display:flex;justify-content:space-between;align-items:center;height:100%}
+    .logo{display:flex;align-items:center;gap:10px}
+    .logo-icon{width:34px;height:34px;border-radius:9px;overflow:hidden;display:grid;place-items:center;background:rgba(90,54,255,.18)}
+    .logo-icon img{
+      width:100%;height:100%;object-fit:cover;
+      background:transparent;
+    }
+    .logo-text{font-weight:800;font-size:18px;letter-spacing:.2px}
+    .logo-text span{color:var(--gold)}
+    .nav-btn{
+      background:linear-gradient(135deg,var(--gold),#ffdc78);
+      color:#1a1233;border:none;border-radius:999px;padding:9px 16px;
+      font-size:14px;font-weight:700;text-decoration:none;box-shadow:0 8px 26px rgba(255,200,61,.25);
+      transition:.25s;
+    }
+    .nav-btn:hover{transform:translateY(-1px);box-shadow:0 12px 34px rgba(255,200,61,.35)}
+    .notification{
+      position:fixed;top:80px;left:50%;transform:translateX(-50%);
+      background:rgba(22,16,44,.9);backdrop-filter:blur(8px);
+      padding:8px 16px;border-radius:25px;border:1px solid rgba(255,255,255,.1);
+      font-size:13px;font-weight:600;display:none;align-items:center;gap:8px;white-space:nowrap;max-width:90vw;z-index:40;
+      box-shadow:0 8px 28px rgba(0,0,0,.35)
+    }
+    .notification.show{display:flex}
+    .notification-dot{width:8px;height:8px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.45}}
+    .main-content{padding:96px 1rem 56px;position:relative;z-index:10}
+    .container{max-width:460px;margin:0 auto;text-align:center}
+    .content-section{margin-bottom:2rem;opacity:0;transform:translateY(30px);animation:slideUp .6s forwards}
+    .content-section:nth-child(1){animation-delay:0s}
+    .content-section:nth-child(2){animation-delay:.12s}
+    .content-section:nth-child(3){animation-delay:.24s}
+    .content-section:nth-child(4){animation-delay:.36s}
+    .content-section:nth-child(5){animation-delay:.48s}
+    .content-section:nth-child(6){animation-delay:.6s}
+    @keyframes slideUp{to{opacity:1;transform:translateY(0)}}
+    .verified-badge{
+      background:rgba(90,54,255,.16); border:1px solid rgba(255,255,255,.16);
+      border-radius:999px; padding:8px 14px; display:inline-flex; align-items:center; gap:10px; font-size:13px
+    }
+    .verified-check{
+      width:20px;height:20px;border-radius:50%;display:grid;place-items:center;
+      background:var(--gold);color:#1a1233;font-size:12px;font-weight:900
+    }
+    .main-logo{width:140px;height:140px;margin:4px auto 0;display:grid;place-items:center;position:relative;overflow:hidden;border-radius:24%}
+    .main-logo::after{
+      content:""; position:absolute; inset:-14px; border-radius:28%;
+      background: radial-gradient(closest-side, rgba(90,54,255,.45), transparent 60%);
+      filter: blur(8px); z-index:-1;
+    }
+    .logo-image{width:100%;height:100%;object-fit:cover}
+    .main-title{font-size:26px;line-height:1.25;font-weight:900;margin-bottom:1rem}
+    .main-title em{color:var(--gold);font-style:normal}
+    .btn{border:none;border-radius:999px;font-weight:800;cursor:pointer;transition:.2s;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;width:100%}
+    .btn-download{
+      background:linear-gradient(135deg,var(--purple),var(--purple-dark));
+      color:#fff;padding:16px 28px;font-size:18px;
+      box-shadow:0 10px 30px var(--btn-shadow);margin-bottom:1rem
+    }
+    .btn-download:hover{transform:translateY(-2px);box-shadow:0 16px 44px rgba(90,54,255,.45)}
+    .btn-secondary{
+      background:linear-gradient(135deg,var(--gold),#ffd769);color:#1a1233;
+      padding:12px 24px;font-size:16px;box-shadow:0 8px 25px rgba(255,200,61,.35)
+    }
+    .btn-secondary:hover{transform:translateY(-2px) scale(1.02)}
+    .how-it-works{
+      background:linear-gradient(135deg,rgba(41,28,88,.75),rgba(26,18,56,.75));
+      border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:24px;
+      box-shadow:0 8px 32px rgba(15,20,25,.5);backdrop-filter:blur(8px)
+    }
+    .section-title{font-size:20px;font-weight:900;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+    .section-title .accent{color:var(--gold)}
+    .steps{display:flex;flex-direction:column;gap:16px}
+    .step{display:flex;align-items:flex-start;gap:14px;text-align:left}
+    .step-icon{width:24px;height:24px;background:var(--gold);color:#1a1233;border-radius:8px;display:grid;place-items:center;font-weight:900}
+    .step-content h3{font-size:16px;font-weight:800;margin-bottom:4px;color:#fff}
+    .step-content p{font-size:14px;color:rgba(255,255,255,.75)}
+    @media(max-width:480px){.main-title{font-size:22px}}
+  </style>
+</head>
+<body>
+  <div class="bg-float bg-float-1"></div>
+  <div class="bg-float bg-float-2"></div>
+  <div class="bg-float bg-float-3"></div>
+  <nav class="top-nav">
+    <div class="nav-content">
+      <div class="logo">
+        <div class="logo-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/51/4f/22/514f2205-68f1-08b6-2efa-589e14ad4bcf/AppIcon-0-0-1x_U007epad-0-11-85-220.jpeg/460x0w.webp" alt="Playful Rewards Logo" /></div>
+        <div class="logo-text">Playful <span>Rewards</span></div>
+      </div>
+      <a href="https://rewarduplevel.com/aff_c?offer_id=2211&aff_id=27143&source=PLUKEmilia" class="nav-btn">Get App</a>
+    </div>
+  </nav>
+  <div class="notification" id="notification">
+    <div class="notification-dot"></div>
+    <span id="notification-text"></span>
+  </div>
+  <main class="main-content">
+    <div class="container">
+      <div class="content-section">
+        <div class="verified-badge"><span>Official Rewards App</span><div class="verified-check">✓</div></div>
+      </div>
+      <div class="content-section">
+        <div class="main-logo">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/51/4f/22/514f2205-68f1-08b6-2efa-589e14ad4bcf/AppIcon-0-0-1x_U007epad-0-11-85-220.jpeg/460x0w.webp" class="logo-image" alt="Playful Rewards Logo">
+        </div>
+      </div>
+      <div class="content-section">
+        <h1 class="main-title">Play fun games & <em>earn rewards</em> fast</h1>
+      </div>
+      <div class="content-section">
+        <a href="https://rewarduplevel.com/aff_c?offer_id=2211&aff_id=27143&source=PLUKEmilia" class="btn btn-download">DOWNLOAD NOW</a>
+      </div>
+      <div class="content-section">
+        <div class="how-it-works">
+          <h2 class="section-title">How it works <span class="accent">→</span></h2>
+          <div class="steps">
+            <div class="step">
+              <div class="step-icon">✓</div>
+              <div class="step-content"><h3>Install the app</h3><p>One tap and you’re in.</p></div>
+            </div>
+            <div class="step">
+              <div class="step-icon">✓</div>
+              <div class="step-content"><h3>Play & complete tasks</h3><p>Games, surveys, offers. Pick what you like!</p></div>
+            </div>
+            <div class="step">
+              <div class="step-icon">✓</div>
+              <div class="step-content"><h3>Redeem rewards</h3><p>Bank or PayPal, your choice.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="content-section">
+        <a href="https://rewarduplevel.com/aff_c?offer_id=2211&aff_id=27143&source=PLUKEmilia" class="btn btn-secondary">Start Earning →</a>
+      </div>
+    </div>
+  </main>
+  <script>
+    const names=['Emma','Jake','Sarah','Tyler','Mia','Josh','Zoe','Ryan','Lily','Alex','Maya','Dean','Ava','Luke','Chloe'];
+    const amounts=['50 coins','120 coins','90 coins','300 coins','200 coins','150 coins','250 coins','180 coins','75 coins','210 coins'];
+    function showNotification(){
+      const name=names[Math.floor(Math.random()*names.length)];
+      const amount=amounts[Math.floor(Math.random()*amounts.length)];
+      document.getElementById('notification-text').textContent=`${name} just earned ${amount}`;
+      document.getElementById('notification').classList.add('show');
+      setTimeout(()=>document.getElementById('notification').classList.remove('show'),5000);
+    }
+    setTimeout(showNotification,2500);
+    setInterval(showNotification,Math.random()*6000+11000);
+  </script>
+</body>
+</html>
+message.txt
+11 KB
