@@ -6,7 +6,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#581c87">
-    <title>Country Redirect Landing Page</title>
+    <title>Create Beautiful Landing Page with Smooth Transitions</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,22 +18,20 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
         }
 
         html {
-            font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             -webkit-text-size-adjust: 100%;
             -webkit-tap-highlight-color: transparent;
+            font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         body {
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             touch-action: manipulation;
-            overscroll-behavior: none;
+            font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             min-height: 100vh;
-            min-height: 100dvh; /* Dynamic viewport height for mobile browsers */
             background: linear-gradient(135deg, #111827 0%, #581c87 50%, #111827 100%);
             color: white;
             display: flex;
@@ -49,7 +47,27 @@
             padding-right: env(safe-area-inset-right);
         }
 
-        /* Floating Background Elements */
+        .intro-rust-font {
+            font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .intro-rust-medium {
+            font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+        }
+
+        .intro-rust-bold {
+            font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.015em;
+            line-height: 1.3;
+        }
+
         .floating-bg {
             position: absolute;
             border-radius: 50%;
@@ -57,37 +75,37 @@
         }
 
         .floating-1 {
-            top: 3rem;
-            left: 0.75rem;
-            width: 2rem;
-            height: 2rem;
+            top: 4rem;
+            left: 1rem;
+            width: 3rem;
+            height: 3rem;
             background: rgba(168, 85, 247, 0.1);
             animation: pulse 2s infinite;
         }
 
         .floating-2 {
-            top: 6rem;
-            right: 0.75rem;
-            width: 1.5rem;
-            height: 1.5rem;
+            top: 8rem;
+            right: 1rem;
+            width: 2.5rem;
+            height: 2.5rem;
             background: rgba(34, 197, 94, 0.1);
             animation: bounce 2s infinite;
         }
 
         .floating-3 {
-            bottom: 6rem;
-            left: 0.75rem;
-            width: 1.25rem;
-            height: 1.25rem;
+            bottom: 8rem;
+            left: 1rem;
+            width: 2rem;
+            height: 2rem;
             background: rgba(59, 130, 246, 0.1);
             animation: ping 2s infinite;
         }
 
         .floating-4 {
-            bottom: 3rem;
-            right: 0.75rem;
-            width: 2.5rem;
-            height: 2.5rem;
+            bottom: 4rem;
+            right: 1rem;
+            width: 3.5rem;
+            height: 3.5rem;
             background: rgba(234, 179, 8, 0.1);
             animation: pulse 2s infinite;
         }
@@ -114,51 +132,36 @@
             75%, 100% { transform: scale(2); opacity: 0; }
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(1rem);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Logo */
         .logo {
-            width: 6rem;
-            height: 6rem;
-            background: linear-gradient(135deg, #9333ea 0%, #ec4899 100%);
-            border-radius: 0.75rem;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.875rem;
-            font-weight: 900;
+            width: 8rem;
+            height: 8rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            object-fit: cover;
+            margin-bottom: 2rem;
+            margin-top: 2rem;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         @media (min-width: 640px) {
             .logo {
                 width: 10rem;
                 height: 10rem;
-                border-radius: 1.5rem;
                 margin-bottom: 2.5rem;
-                font-size: 2.5rem;
+                margin-top: 2.5rem;
             }
         }
 
-        /* Typography */
         .title {
-            font-size: 1.25rem;
-            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
             text-align: center;
-            margin-bottom: 1.5rem;
-            padding: 0 0.5rem;
-            tracking: -0.025em;
-            line-height: 1.1;
+            padding: 0 1rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
         }
 
         @media (min-width: 640px) {
@@ -169,17 +172,17 @@
 
         .steps {
             text-align: center;
-            margin-bottom: 1.5rem;
-            padding: 0 0.75rem;
-            space-y: 0.75rem;
+            margin-bottom: 2rem;
+            padding: 0 1rem;
         }
 
         .step {
-            font-size: 0.875rem;
+            font-size: 1rem;
             color: #d1d5db;
-            font-weight: 600;
             line-height: 1.5;
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.005em;
         }
 
         @media (min-width: 640px) {
@@ -191,24 +194,16 @@
         .step-highlight {
             font-style: italic;
             color: #fde047;
-            font-weight: 700;
-            display: block;
-            margin-top: 0.25rem;
-        }
-
-        @media (min-width: 640px) {
-            .step-highlight {
-                display: inline;
-                margin-top: 0;
-            }
+            font-weight: 800;
         }
 
         .question {
-            font-size: 1.125rem;
-            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
             text-align: center;
-            margin-bottom: 1.25rem;
-            padding: 0 0.75rem;
+            padding: 0 1rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
         }
 
         @media (min-width: 640px) {
@@ -217,74 +212,78 @@
             }
         }
 
-        /* Buttons */
         .button-container {
             width: 100%;
-            max-width: 20rem;
-            padding: 0 0.75rem;
-            margin-bottom: 1.25rem;
-        }
-
-        @media (min-width: 640px) {
-            .button-container {
-                max-width: 28rem;
-                padding: 0 1rem;
-            }
+            max-width: 24rem;
+            padding: 0 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .country-buttons {
             display: flex;
             flex-direction: column;
-            gap: 0.75rem;
+            gap: 1rem;
             transition: all 0.5s ease-in-out;
         }
 
         .start-button-container {
-            animation: fadeInUp 0.5s ease-out;
             transition: all 0.5s ease-in-out;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(1rem);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .btn {
             width: 100%;
-            background: linear-gradient(135deg, #9333ea 0%, #7c3aed 100%);
-            color: white;
-            font-weight: 700;
-            padding: 0.875rem 1rem;
-            border-radius: 0.5rem;
+            padding: 1rem 1.5rem;
+            border-radius: 0.75rem;
             border: none;
             cursor: pointer;
             transition: all 0.2s ease;
             font-size: 1rem;
-            min-height: 3rem;
+            min-height: 3.5rem;
             touch-action: manipulation;
             -webkit-tap-highlight-color: transparent;
-            user-select: none;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
 
         @media (min-width: 640px) {
             .btn {
                 font-size: 1.125rem;
-                padding: 1.25rem 1rem;
-                min-height: 3.5rem;
-                border-radius: 0.75rem;
+                padding: 1.25rem 1.5rem;
+                min-height: 4rem;
             }
         }
 
-        .btn:active {
+        .btn-country {
+            background: linear-gradient(135deg, #9333ea 0%, #7c3aed 100%);
+            color: white;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-country:active {
             background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
             transform: scale(0.95);
         }
 
-        .btn:disabled {
+        .btn-country:disabled {
             opacity: 0.5;
             cursor: not-allowed;
         }
 
         .btn-start {
             background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            font-weight: 900;
+            color: white;
             font-size: 1.125rem;
+            padding: 1.25rem 1.5rem;
             animation: pulse 2s infinite;
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
         }
@@ -300,17 +299,16 @@
             transform: scale(0.95);
         }
 
-        /* Verification */
         .verification {
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
         }
 
         .verification-icon {
-            width: 0.875rem;
-            height: 0.875rem;
+            width: 1rem;
+            height: 1rem;
             background: #3b82f6;
             border-radius: 50%;
             display: flex;
@@ -319,57 +317,20 @@
             margin-right: 0.5rem;
         }
 
-        @media (min-width: 640px) {
-            .verification-icon {
-                width: 1rem;
-                height: 1rem;
-            }
-        }
-
         .verification-text {
-            font-size: 0.75rem;
+            font-size: 0.875rem;
             color: #d1d5db;
         }
 
-        @media (min-width: 640px) {
-            .verification-text {
-                font-size: 0.875rem;
-            }
-        }
-
-        .checkmark {
-            width: 0.5rem;
-            height: 0.5rem;
-            fill: white;
-        }
-
-        @media (min-width: 640px) {
-            .checkmark {
-                width: 0.625rem;
-                height: 0.625rem;
-            }
-        }
-
-        /* Stats */
         .stats {
             background: linear-gradient(135deg, rgba(107, 33, 168, 0.5) 0%, rgba(88, 28, 135, 0.5) 100%);
             backdrop-filter: blur(8px);
-            border-radius: 0.5rem;
-            padding: 0.75rem;
+            border-radius: 0.75rem;
+            padding: 1rem;
             width: 100%;
-            max-width: 20rem;
-            margin: 0 0.75rem;
+            max-width: 24rem;
+            margin: 0 1rem 1rem 1rem;
             border: 1px solid rgba(147, 51, 234, 0.3);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-
-        @media (min-width: 640px) {
-            .stats {
-                max-width: 28rem;
-                margin: 0 1rem;
-                border-radius: 0.75rem;
-                padding: 1rem;
-            }
         }
 
         .stats-container {
@@ -380,28 +341,29 @@
         }
 
         .stat-item {
-            flex: 1;
             text-align: center;
         }
 
         .stat-value {
-            font-size: 0.875rem;
-            font-weight: 700;
-            margin-bottom: 0.125rem;
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
         }
 
         @media (min-width: 640px) {
             .stat-value {
                 font-size: 1.125rem;
-                margin-bottom: 0.25rem;
             }
         }
 
         .stat-label {
             font-size: 0.75rem;
             color: #9ca3af;
-            font-weight: 500;
-            line-height: 1.1;
+        }
+
+        @media (min-width: 640px) {
+            .stat-label {
+                font-size: 0.875rem;
+            }
         }
 
         .stat-green { color: #4ade80; }
@@ -410,6 +372,12 @@
 
         .hidden {
             display: none;
+        }
+
+        .checkmark {
+            width: 0.625rem;
+            height: 0.625rem;
+            fill: white;
         }
     </style>
 </head>
@@ -421,33 +389,34 @@
     <div class="floating-bg floating-4"></div>
 
     <!-- Logo -->
-    <div class="logo">🎮</div>
+    <img src="images/playful3.png" alt="Logo" class="logo">
 
     <!-- Title -->
-    <h1 class="title">Follow the steps below!</h1>
+    <h1 class="title intro-rust-medium">Follow the steps below!</h1>
 
     <!-- Steps -->
     <div class="steps">
-        <p class="step">1. Click On Your Country</p>
-        <p class="step">2. Download the app & set up a new account</p>
-        <p class="step">3. Play TWO to FIVE games minimum <span class="step-highlight">(tip: the more you play, the more you make!)</span></p>
-        <p class="step">4. Request your payout anytime & keep playing!</p>
+        <p class="step intro-rust-bold">1. Click On Your Country</p>
+        <p class="step intro-rust-bold">2. Download the app & set up a new account</p>
+        <p class="step intro-rust-bold">3. Play TWO to FIVE games minimum <span class="step-highlight">
+(tip: the more you play, the more you make!)</span></p>
+        <p class="step intro-rust-bold">4. Request your payout anytime & keep playing!</p>
     </div>
 
     <!-- Question -->
-    <h2 class="question">Where are you located?</h2>
+    <h2 class="question intro-rust-medium">Where are you located?</h2>
 
-    <!-- Button Container -->
+    <!-- Country Buttons / Start Button -->
     <div class="button-container">
         <div id="countryButtons" class="country-buttons">
-            <button id="userCountryBtn" class="btn" onclick="showStartButton()" disabled>
+            <button id="userCountryBtn" class="btn btn-country intro-rust-bold" onclick="showStartButton()">
                 <span id="userCountryText">Loading...</span>
             </button>
-            <button class="btn" onclick="showStartButton()">Canada</button>
+            <button class="btn btn-country intro-rust-bold" onclick="showStartButton()">Canada</button>
         </div>
         
         <div id="startButton" class="start-button-container hidden">
-            <button class="btn btn-start" onclick="startNow()">START PLAYING</button>
+            <button class="btn btn-start intro-rust-font" onclick="startNow()">START PLAYING</button>
         </div>
     </div>
 
@@ -465,16 +434,16 @@
     <div class="stats">
         <div class="stats-container">
             <div class="stat-item">
-                <div id="moneyPaidOut" class="stat-value stat-green">$763,143</div>
-                <div class="stat-label">Total Paid Out</div>
+                <div id="moneyPaidOut" class="stat-value stat-green intro-rust-bold">$763,143</div>
+                <div class="stat-label intro-rust-medium">Total Paid Out</div>
             </div>
             <div class="stat-item">
-                <div id="peopleOnline" class="stat-value stat-blue">4,582</div>
-                <div class="stat-label">People Online</div>
+                <div id="peopleOnline" class="stat-value stat-blue intro-rust-bold">4,582</div>
+                <div class="stat-label intro-rust-medium">People Online</div>
             </div>
             <div class="stat-item">
-                <div class="stat-value stat-yellow">86%</div>
-                <div class="stat-label">Users Completing</div>
+                <div class="stat-value stat-yellow intro-rust-bold">86%</div>
+                <div class="stat-label intro-rust-medium">Users Completing</div>
             </div>
         </div>
     </div>
@@ -482,6 +451,7 @@
     <script>
         // State variables
         let userCountry = '';
+        let loading = true;
         let peopleOnline = 4582;
         let moneyPaidOut = 763143;
 
@@ -494,6 +464,7 @@
             } catch (error) {
                 userCountry = 'United States';
             } finally {
+                loading = false;
                 document.getElementById('userCountryText').textContent = userCountry;
                 document.getElementById('userCountryBtn').disabled = false;
             }
@@ -505,13 +476,9 @@
             document.getElementById('startButton').classList.remove('hidden');
         }
 
-        // Start now action - redirect to affiliate link
+        // Start now action - redirect to external URL
         function startNow() {
-            // Replace with your actual affiliate link
-            const affiliateLink = 'https://affrkr.com/?nc2u=hCajnHDNv02vWFCfqns8HTQZaWMQLQ34vQJDRoz7h5U%3d&s1=MIGUELGENRUN';
-            window.open(affiliateLink, '_blank');
-        }
-            window.open(affiliateLink, '_blank');
+            window.location.href = 'https://affrkr.com/?nc2u=hCajnHDNv02vWFCfqns8HTQZaWMQLQ34vQJDRoz7h5U%3d&s1=MIGGENRUN'; // Replace with your redirect URL
         }
 
         // Update people online counter
