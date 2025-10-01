@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification Required</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            padding: 1rem;
+        }
+
+        .container {
+            max-width: 28rem;
+            width: 100%;
+        }
+
+        .card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            padding: 2rem;
+        }
+
+        .icon-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .icon-wrapper {
+            background: #fee2e2;
+            padding: 1rem;
+            border-radius: 50%;
+            display: inline-flex;
+        }
+
+        .icon {
+            width: 3rem;
+            height: 3rem;
+            color: #dc2626;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .title h1 {
+            font-size: 1.875rem;
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 0.5rem;
+        }
+
+        .title p {
+            color: #6b7280;
+            font-size: 1rem;
+        }
+
+        .checkbox-container {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            border: 2px solid #e5e7eb;
+            margin-bottom: 1.5rem;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .checkbox-label:hover .checkbox-text {
+            color: #111827;
+        }
+
+        .checkbox-wrapper {
+            position: relative;
+            margin-right: 0.75rem;
+        }
+
+        .checkbox-input {
+            width: 1.5rem;
+            height: 1.5rem;
+            cursor: pointer;
+            accent-color: #2563eb;
+        }
+
+        .checkbox-text {
+            font-size: 1.125rem;
+            color: #1f2937;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .continue-button {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border-radius: 0.75rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-bottom: 1rem;
+        }
+
+        .continue-button:enabled {
+            background: #2563eb;
+            color: white;
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+        }
+
+        .continue-button:enabled:hover {
+            background: #1d4ed8;
+            box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .continue-button:disabled {
+            background: #d1d5db;
+            color: #9ca3af;
+            cursor: not-allowed;
+        }
+
+        .footer-text {
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            animation: fadeIn 0.5s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="icon-container">
+                <div class="icon-wrapper">
+                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="title">
+                <h1>Verification Required</h1>
+                <p>Please confirm you're not a robot to continue</p>
+            </div>
+
+            <div class="checkbox-container">
+                <label class="checkbox-label">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="robotCheck" class="checkbox-input">
+                    </div>
+                    <span class="checkbox-text">I'm not a robot</span>
+                </label>
+            </div>
+
+            <button id="continueBtn" class="continue-button" disabled>
+                Continue
+            </button>
+
+            <p class="footer-text">
+                By continuing, you agree to our verification process
+            </p>
+        </div>
+    </div>
+
+    <script>
+        const checkbox = document.getElementById('robotCheck');
+        const continueBtn = document.getElementById('continueBtn');
+
+        checkbox.addEventListener('change', function() {
+            continueBtn.disabled = !this.checked;
+        });
+
+        continueBtn.addEventListener('click', function() {
+            if (checkbox.checked) {
+                // Replace with your GitHub Pages lander URL
+                window.open('https://www.straightlyconnected.com/AppleFluent.html', '_blank');
+            }
+        });
+    </script>
+</body>
+</html>
