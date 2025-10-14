@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#581c87">
+    <title>Create Beautiful Landing Page with Smooth Transitions</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
+            font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            touch-action: manipulation;
+            font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #111827 0%, #581c87 50%, #111827 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            position: relative;
+            overflow-x: hidden;
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
+            padding-left: env(safe-area-inset-left);
+            padding-right: env(safe-area-inset-right);
+        }
+
+        .intro-rust-font {
+            font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .intro-rust-medium {
+            font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+        }
+
+        .intro-rust-bold {
+            font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.015em;
+            line-height: 1.3;
+        }
+
+        .floating-bg {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .floating-1 {
+            top: 4rem;
+            left: 1rem;
+            width: 3rem;
+            height: 3rem;
+            background: rgba(168, 85, 247, 0.1);
+            animation: pulse 2s infinite;
+        }
+
+        .floating-2 {
+            top: 8rem;
+            right: 1rem;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: rgba(34, 197, 94, 0.1);
+            animation: bounce 2s infinite;
+        }
+
+        .floating-3 {
+            bottom: 8rem;
+            left: 1rem;
+            width: 2rem;
+            height: 2rem;
+            background: rgba(59, 130, 246, 0.1);
+            animation: ping 2s infinite;
+        }
+
+        .floating-4 {
+            bottom: 4rem;
+            right: 1rem;
+            width: 3.5rem;
+            height: 3.5rem;
+            background: rgba(234, 179, 8, 0.1);
+            animation: pulse 2s infinite;
+        }
+
+        @media (min-width: 640px) {
+            .floating-1 { top: 5rem; left: 2.5rem; width: 5rem; height: 5rem; }
+            .floating-2 { top: 10rem; right: 5rem; width: 4rem; height: 4rem; }
+            .floating-3 { bottom: 10rem; left: 5rem; width: 3rem; height: 3rem; }
+            .floating-4 { bottom: 5rem; right: 2.5rem; width: 6rem; height: 6rem; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-25%); }
+        }
+
+        @keyframes ping {
+            0% { transform: scale(1); opacity: 1; }
+            75%, 100% { transform: scale(2); opacity: 0; }
+        }
+
+        .logo {
+            width: 8rem;
+            height: 8rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            object-fit: cover;
+            margin-bottom: 2rem;
+            margin-top: 2rem;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media (min-width: 640px) {
+            .logo {
+                width: 10rem;
+                height: 10rem;
+                margin-bottom: 2.5rem;
+                margin-top: 2.5rem;
+            }
+        }
+
+        .title {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            padding: 0 1rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+        }
+
+        @media (min-width: 640px) {
+            .title {
+                font-size: 1.875rem;
+            }
+        }
+
+        .steps {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 0 1rem;
+        }
+
+        .step {
+            font-size: 1rem;
+            color: #d1d5db;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.005em;
+        }
+
+        @media (min-width: 640px) {
+            .step {
+                font-size: 1.125rem;
+            }
+        }
+
+        .step-highlight {
+            font-style: italic;
+            color: #fde047;
+            font-weight: 800;
+        }
+
+        .question {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            padding: 0 1rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        @media (min-width: 640px) {
+            .question {
+                font-size: 1.5rem;
+            }
+        }
+
+        .button-container {
+            width: 100%;
+            max-width: 24rem;
+            padding: 0 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .country-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            transition: all 0.5s ease-in-out;
+        }
+
+        .start-button-container {
+            transition: all 0.5s ease-in-out;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(1rem);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border-radius: 0.75rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1rem;
+            min-height: 3.5rem;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        @media (min-width: 640px) {
+            .btn {
+                font-size: 1.125rem;
+                padding: 1.25rem 1.5rem;
+                min-height: 4rem;
+            }
+        }
+
+        .btn-country {
+            background: linear-gradient(135deg, #9333ea 0%, #7c3aed 100%);
+            color: white;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-country:active {
+            background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+            transform: scale(0.95);
+        }
+
+        .btn-country:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-start {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            font-size: 1.125rem;
+            padding: 1.25rem 1.5rem;
+            animation: pulse 2s infinite;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (min-width: 640px) {
+            .btn-start {
+                font-size: 1.25rem;
+            }
+        }
+
+        .btn-start:active {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            transform: scale(0.95);
+        }
+
+        .verification {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .verification-icon {
+            width: 1rem;
+            height: 1rem;
+            background: #3b82f6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.5rem;
+        }
+
+        .verification-text {
+            font-size: 0.875rem;
+            color: #d1d5db;
+        }
+
+        .stats {
+            background: linear-gradient(135deg, rgba(107, 33, 168, 0.5) 0%, rgba(88, 28, 135, 0.5) 100%);
+            backdrop-filter: blur(8px);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            width: 100%;
+            max-width: 24rem;
+            margin: 0 1rem 1rem 1rem;
+            border: 1px solid rgba(147, 51, 234, 0.3);
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        @media (min-width: 640px) {
+            .stat-value {
+                font-size: 1.125rem;
+            }
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: #9ca3af;
+        }
+
+        @media (min-width: 640px) {
+            .stat-label {
+                font-size: 0.875rem;
+            }
+        }
+
+        .stat-green { color: #4ade80; }
+        .stat-blue { color: #60a5fa; }
+        .stat-yellow { color: #facc15; }
+
+        .hidden {
+            display: none;
+        }
+
+        .checkmark {
+            width: 0.625rem;
+            height: 0.625rem;
+            fill: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Background Elements -->
+    <div class="floating-bg floating-1"></div>
+    <div class="floating-bg floating-2"></div>
+    <div class="floating-bg floating-3"></div>
+    <div class="floating-bg floating-4"></div>
+
+    <!-- Logo -->
+    <img src="images/playful3.png" alt="Logo" class="logo">
+
+    <!-- Title -->
+    <h1 class="title intro-rust-medium">Follow the steps below!</h1>
+
+    <!-- Steps -->
+    <div class="steps">
+        <p class="step intro-rust-bold">1. Click On Your Country</p>
+        <p class="step intro-rust-bold">2. Download the app & set up a new account</p>
+        <p class="step intro-rust-bold">3. Play TWO to FIVE games minimum <span class="step-highlight">(tip: the more you play, the more you make!)</span></p>
+        <p class="step intro-rust-bold">4. Request your payout anytime & keep playing!</p>
+    </div>
+
+    <!-- Question -->
+    <h2 class="question intro-rust-medium">Where are you located?</h2>
+
+    <!-- Country Buttons / Start Button -->
+    <div class="button-container">
+        <div id="countryButtons" class="country-buttons">
+            <button id="userCountryBtn" class="btn btn-country intro-rust-bold" onclick="showStartButton()">
+                <span id="userCountryText">Loading...</span>
+            </button>
+            <button class="btn btn-country intro-rust-bold" onclick="showStartButton()">Canada</button>
+        </div>
+
+        <div id="startButton" class="start-button-container hidden">
+            <button class="btn btn-start intro-rust-font" onclick="startNow()">START PLAYING</button>
+        </div>
+    </div>
+
+    <!-- Verification Status -->
+    <div class="verification">
+        <div class="verification-icon">
+            <svg class="checkmark" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+        </div>
+        <p class="verification-text">Verified By TikTok</p>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="stats">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div id="moneyPaidOut" class="stat-value stat-green intro-rust-bold">$763,143</div>
+                <div class="stat-label intro-rust-medium">Total Paid Out</div>
+            </div>
+            <div class="stat-item">
+                <div id="peopleOnline" class="stat-value stat-blue intro-rust-bold">4,582</div>
+                <div class="stat-label intro-rust-medium">People Online</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value stat-yellow intro-rust-bold">86%</div>
+                <div class="stat-label intro-rust-medium">Users Completing</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // REDIRECT CONFIGURATION
+        // Set your redirect URL here:
+        const REDIRECT_URL = '';
+
+        // Alternative: Set via localStorage in browser console:
+        // localStorage.setItem('redirectUrl', 'https://your-url.com');
+
+        // State variables
+        let userCountry = '';
+        let loading = true;
+        let peopleOnline = 4582;
+        let moneyPaidOut = 763143;
+
+        // Get user's country
+        async function getUserCountry() {
+            try {
+                const response = await fetch('https://ipapi.co/json/');
+                const data = await response.json();
+                userCountry = data.country_name || 'United States';
+            } catch (error) {
+                userCountry = 'United States';
+            } finally {
+                loading = false;
+                document.getElementById('userCountryText').textContent = userCountry;
+                document.getElementById('userCountryBtn').disabled = false;
+            }
+        }
+
+        // Show start button
+        function showStartButton() {
+            document.getElementById('countryButtons').classList.add('hidden');
+            document.getElementById('startButton').classList.remove('hidden');
+        }
+
+        // Start now action - MODIFIED TO USE REDIRECT_URL
+        function startNow() {
+            const redirectUrl = localStorage.getItem('redirectUrl') || REDIRECT_URL;
+            if (redirectUrl) {
+                window.open(redirectUrl, '_blank');
+            } else {
+                alert('Please set REDIRECT_URL in the script or use localStorage.setItem("redirectUrl", "YOUR_URL") in console');
+            }
+        }
+
+        // Update people online counter
+        function updatePeopleOnline() {
+            peopleOnline += Math.floor(Math.random() * 3) + 1;
+            document.getElementById('peopleOnline').textContent = peopleOnline.toLocaleString();
+        }
+
+        // Update money paid out counter
+        function updateMoneyPaidOut() {
+            const amounts = [847, 923, 789, 856, 978, 812, 934, 898, 867, 945, 823, 901];
+            const randomAmount = amounts[Math.floor(Math.random() * amounts.length)];
+            moneyPaidOut += randomAmount;
+            document.getElementById('moneyPaidOut').textContent = '$' + moneyPaidOut.toLocaleString();
+        }
+
+        // Initialize the app
+        function init() {
+            getUserCountry();
+
+            // Update people online every 3 seconds
+            setInterval(updatePeopleOnline, 3000);
+
+            // Update money paid out every 2 seconds
+            setInterval(updateMoneyPaidOut, 2000);
+        }
+
+        // Start the app when page loads
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
