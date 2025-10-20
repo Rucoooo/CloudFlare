@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Target Gift Card - Get Your $1000 Reward</title>
+
+    <!-- TikTok Pixel Code Start -->
+    <script>
+    !function (w, d, t) {
+      w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+  var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+  ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+
+      ttq.load('D3Q0HCRC77UD1HDJ9EKG');
+      ttq.page();
+    }(window, document, 'ttq');
+    </script>
+    <!-- TikTok Pixel Code End -->
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: #f5f5f7;
+            min-height: 100vh;
+            color: #1d1d1f;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 44px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-link {
+            display: block;
+            height: 40px;
+            cursor: pointer;
+        }
+
+        .custom-logo {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .header-icons {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-icon {
+            width: 16px;
+            height: 16px;
+            color: #cc0000;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .header-icons a {
+            text-decoration: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 20px 40px;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(180deg, #f5f5f7 0%, #ffffff 100%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: 600;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: #1d1d1f;
+        }
+
+        .subtitle {
+            font-size: 21px;
+            color: #86868b;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+
+        /* CTA Section */
+        .cta-section {
+            padding: 15px 20px 35px;
+            text-align: center;
+            background: #f5f5f7;
+        }
+
+        .cta-container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .cta-button {
+            display: block;
+            background: #cc0000;
+            color: white;
+            padding: 18px 32px;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 16px rgba(204, 0, 0, 0.2);
+            text-align: center;
+            letter-spacing: -0.01em;
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover {
+            background: #ff0000;
+            transform: scale(1.02);
+            box-shadow: 0 8px 24px rgba(204, 0, 0, 0.3);
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:active {
+            transform: scale(0.98);
+        }
+
+        .cta-helper-text {
+            margin-top: 12px;
+            font-size: 13px;
+            color: #86868b;
+        }
+
+        /* Reviews - Apple Style */
+        .reviews {
+            padding: 60px 20px;
+            background: white;
+        }
+
+        .reviews-content {
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
+        .reviews-header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .reviews-title {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1d1d1f;
+        }
+
+        .reviews-subtitle {
+            font-size: 21px;
+            color: #86868b;
+            margin-bottom: 30px;
+        }
+
+        .rating-summary {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #d2d2d7;
+            margin-bottom: 30px;
+        }
+
+        .rating-number {
+            font-size: 76px;
+            font-weight: 500;
+            line-height: 1;
+            color: #1d1d1f;
+        }
+
+        .rating-details {
+            flex: 1;
+        }
+
+        .rating-stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 8px;
+        }
+
+        .star {
+            width: 23px;
+            height: 23px;
+            background: #cc0000;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        }
+
+        .rating-count {
+            color: #86868b;
+            font-size: 17px;
+        }
+
+        .review-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .review-card {
+            border-bottom: 1px solid #d2d2d7;
+            padding-bottom: 24px;
+        }
+
+        .review-card:last-child {
+            border-bottom: none;
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .reviewer-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .reviewer-name {
+            font-weight: 600;
+            font-size: 15px;
+            color: #1d1d1f;
+        }
+
+        .review-date {
+            color: #86868b;
+            font-size: 15px;
+        }
+
+        .review-rating {
+            display: flex;
+            gap: 2px;
+            margin-bottom: 8px;
+        }
+
+        .review-star {
+            width: 15px;
+            height: 15px;
+            background: #cc0000;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        }
+
+        .review-title {
+            font-weight: 600;
+            font-size: 17px;
+            margin-bottom: 8px;
+            color: #1d1d1f;
+        }
+
+        .review-text {
+            font-size: 15px;
+            line-height: 1.5;
+            color: #1d1d1f;
+            margin-bottom: 12px;
+        }
+
+        .review-helpful {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 15px;
+            color: #86868b;
+        }
+
+        .helpful-button {
+            color: #cc0000;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        /* Footer */
+        .footer {
+            background: #f5f5f7;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 980px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: #86868b;
+            text-decoration: none;
+            font-size: 12px;
+            transition: color 0.2s;
+        }
+
+        .footer-link:hover {
+            color: #cc0000;
+        }
+
+        /* iOS-style Notifications */
+        .notification {
+            position: fixed;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(245, 245, 247, 0.9);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-radius: 16px;
+            padding: 12px 16px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            z-index: 999;
+            transition: top 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+            max-width: calc(100vw - 32px);
+            width: 380px;
+            border: 0.5px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .notification.show {
+            top: 60px;
+        }
+
+        .notification-icon {
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, #cc0000 0%, #ff0000 100%);
+            border-radius: 8.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            align-self: center;
+            margin-top: 4px;
+        }
+
+        .notification-icon svg {
+            width: 22px;
+            height: 22px;
+            color: white;
+        }
+
+        .notification-content {
+            flex: 1;
+            padding-right: 8px;
+        }
+
+        .notification-header {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 2px;
+        }
+
+        .notification-app {
+            font-size: 13px;
+            font-weight: 600;
+            color: #1d1d1f;
+        }
+
+        .notification-time {
+            font-size: 12px;
+            color: #8e8e93;
+        }
+
+        .notification-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 2px;
+            line-height: 1.2;
+        }
+
+        .notification-body {
+            font-size: 15px;
+            color: #3c3c43;
+            line-height: 1.3;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px;
+            }
+
+            .subtitle {
+                font-size: 18px;
+            }
+
+
+            .cta-button {
+                width: 100%;
+                max-width: 320px;
+                margin: 0 auto;
+            }
+
+            .cta-section {
+                padding: 20px 20px 30px;
+            }
+
+            .rating-number {
+                font-size: 64px;
+            }
+
+            .notification {
+                width: calc(100vw - 16px);
+                top: -120px;
+            }
+
+            .notification.show {
+                top: 56px;
+            }
+
+            .header-content {
+                height: 48px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content > * {
+            animation: fadeIn 0.8s ease forwards;
+            animation-fill-mode: both;
+        }
+
+        .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
+        .hero-content > *:nth-child(2) { animation-delay: 0.2s; }
+        .hero-content > *:nth-child(3) { animation-delay: 0.3s; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <!-- Custom Logo -->
+            <a href="#" class="logo-link" id="logoLink">
+                <img src="images/targetlogo.png" alt="Target Logo" class="custom-logo" onerror="this.style.display='none'">
+            </a>
+
+            <!-- Right Icons -->
+            <div class="header-icons">
+                <!-- Search Icon -->
+                <a href="#" id="headerLink1">
+                    <svg class="header-icon" viewBox="0 0 18 18" fill="currentColor">
+                        <path d="M17.5 16.4l-4.8-4.8c1-1.2 1.5-2.7 1.5-4.3 0-3.9-3.1-7-7-7s-7 3.1-7 7 3.1 7 7 7c1.6 0 3.1-.5 4.3-1.5l4.8 4.8c.2.2.4.3.6.3s.4-.1.6-.3c.3-.3.3-.8 0-1.2zM1.7 7.2c0-3 2.5-5.5 5.5-5.5s5.5 2.5 5.5 5.5-2.5 5.5-5.5 5.5-5.5-2.5-5.5-5.5z"/>
+                    </svg>
+                </a>
+
+                <!-- Shopping Bag Icon -->
+                <a href="#" id="headerLink2">
+                    <svg class="header-icon" viewBox="0 0 18 18" fill="currentColor">
+                        <path d="M13.5 5h-1c0-1.9-1.6-3.5-3.5-3.5S5.5 3.1 5.5 5h-1C3.7 5 3 5.7 3 6.5v8c0 .8.7 1.5 1.5 1.5h9c.8 0 1.5-.7 1.5-1.5v-8c0-.8-.7-1.5-1.5-1.5zM9 2.5c1.4 0 2.5 1.1 2.5 2.5h-5c0-1.4 1.1-2.5 2.5-2.5zm4.5 12c0 .3-.2.5-.5.5H5c-.3 0-.5-.2-.5-.5v-8c0-.3.2-.5.5-.5h.5v1.5c0 .3.2.5.5.5s.5-.2.5-.5V6h5v1.5c0 .3.2.5.5.5s.5-.2.5-.5V6h.5c.3 0 .5.2.5.5v8z"/>
+                    </svg>
+                </a>
+
+                <!-- Menu Icon -->
+                <a href="#" id="headerLink3">
+                    <svg class="header-icon" viewBox="0 0 18 18" fill="currentColor">
+                        <path d="M2 4.5h14c.3 0 .5-.2.5-.5s-.2-.5-.5-.5H2c-.3 0-.5.2-.5.5s.2.5.5.5zm0 5h14c.3 0 .5-.2.5-.5s-.2-.5-.5-.5H2c-.3 0-.5.2-.5.5s.2.5.5.5zm0 5h14c.3 0 .5-.2.5-.5s-.2-.5-.5-.5H2c-.3 0-.5.2-.5.5s.2.5.5.5z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Get Your $1000<br>Target Gift Card</h1>
+            <p class="subtitle">Complete 3 simple steps to claim your reward</p>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <!-- Main CTA Button -->
+            <a href="#" class="cta-button" id="mainCtaButton">Claim Your Target Reward</a>
+            <p class="cta-helper-text">No purchase necessary • 2 minutes to complete</p>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews">
+        <div class="reviews-content">
+            <div class="reviews-header">
+                <h2 class="reviews-title">Ratings & Reviews</h2>
+                <p class="reviews-subtitle">4.8 out of 5</p>
+            </div>
+
+            <div class="rating-summary">
+                <div class="rating-number">4.8</div>
+                <div class="rating-details">
+                    <div class="rating-stars">
+                        <div class="star"></div>
+                        <div class="star"></div>
+                        <div class="star"></div>
+                        <div class="star"></div>
+                        <div class="star"></div>
+                    </div>
+                    <div class="rating-count">24.8K Ratings</div>
+                </div>
+            </div>
+
+            <div class="review-cards">
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-name">SarahJ2024</div>
+                            <div class="review-date">10/15/24</div>
+                        </div>
+                    </div>
+                    <div class="review-rating">
+                        <div class="review-star"></div>
+                        <div class="review-star"></div>
+                        <div class="review-star"></div>
+                        <div class="review-star"></div>
+                        <div class="review-star"></div>
+                    </div>
+                    <div class="review-title">Exceeded expectations!</div>
+                    <div class="review-text">I was hesitant at first, but the process was straightforward. Received my gift card code within 48 hours of completing the requirements. Customer service was responsive when I had questions.</div>
+                    <div class="review-helpful">
+                        Helpful?
+                        <a href="#" class="helpful-button">Yes</a>
+                        <a href="#" class="helpful-button">No</a>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-name">Mike_R</div>
+                            <div class="review-date">10/08/24</div>
+                        </div>
+                    </div>
+                    <div class="review-rating">
+                        <div class="review-star"></div>
+                        <div class="review-star"></div>
+                        <div class="review-star"></div>
+                        <div class="review-star"></div>
+                        <div class="review-star"></div>
+                    </div>
+                    <div class="review-title">Legitimate offer</div>
+                    <div class="review-text">Followed all the steps and got my $1000 Target gift card as promised. The partner deals were actually useful services I was interested in anyway. Great experience overall.</div>
+                    <div class="review-helpful">
+                        Helpful?
+                        <a href="#" class="helpful-button">Yes</a>
+                        <a href="#" class="helpful-button">No</a>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-name">EmmaWilson</div>
+                            <div class="review-date">09/30/24</div>
+                        </div>
+                    </div>
+                    <div class="review-rating">
+                        <div class="review-star"></div>
+                        <div class="review-star"></div>
+                        <div class="review-star"></div>
+                        <div class="review-star"></div>
+                        <div class="review-star"></div>
+                    </div>
+                    <div class="review-title">Quick process</div>
+                    <div class="review-text">The whole process took less than 10 minutes. Make sure to read the requirements carefully. Support team helped me when I had trouble with one of the steps.</div>
+                    <div class="review-helpful">
+                        Helpful?
+                        <a href="#" class="helpful-button">Yes</a>
+                        <a href="#" class="helpful-button">No</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <a href="https://www.target.com/c/terms-conditions/-/N-4sr7l" class="footer-link" target="_blank" rel="noopener noreferrer">Terms of Use</a>
+            <a href="https://www.target.com/c/target-privacy-policy/-/N-4sr9z" class="footer-link" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+            <a href="https://www.target.com/" class="footer-link" target="_blank" rel="noopener noreferrer">Target.com</a>
+        </div>
+    </footer>
+
+    <!-- Notification Container -->
+    <div id="notification-container"></div>
+
+    <script>
+        // ============================================
+        // CONFIGURATION SECTION - EDIT THESE VALUES
+        // ============================================
+
+        // Logo and Header Links
+        const LOGO_REDIRECT_URL = 'https://www.target.com';
+        const HEADER_LINK_1_URL = 'https://www.target.com';
+        const HEADER_LINK_2_URL = 'https://www.target.com';
+        const HEADER_LINK_3_URL = 'https://www.target.com';
+
+        // Main CTA URL
+        const MAIN_CTA_URL = 'https://t.afftrackr.com/?es4v=3Wiep5czUpRjNtFnhc3rmUGNb34UGIHlvQJDRoz7h5U%3d&s1=us';
+
+        // ============================================
+        // APPLY CONFIGURATION TO LINKS
+        // ============================================
+
+        document.getElementById('logoLink').href = LOGO_REDIRECT_URL;
+        document.getElementById('headerLink1').href = HEADER_LINK_1_URL;
+        document.getElementById('headerLink2').href = HEADER_LINK_2_URL;
+        document.getElementById('headerLink3').href = HEADER_LINK_3_URL;
+        document.getElementById('mainCtaButton').href = MAIN_CTA_URL;
+
+        // ============================================
+        // FUNCTIONALITY (DO NOT EDIT BELOW)
+        // ============================================
+
+        // iOS-style notifications
+        const notifications = [
+            {
+                appName: 'Gift Cards',
+                title: 'New Reward Claimed',
+                body: 'Jennifer M. just received her $1000 Target gift card'
+            },
+            {
+                appName: 'Gift Cards',
+                title: 'Verification Complete',
+                body: 'David L. successfully claimed his reward'
+            },
+            {
+                appName: 'Gift Cards',
+                title: 'Popular Offer',
+                body: '23 people viewing this offer now'
+            },
+            {
+                appName: 'Gift Cards',
+                title: 'Quick Process',
+                body: 'Sarah K. completed all steps in 5 minutes'
+            },
+            {
+                appName: 'Gift Cards',
+                title: 'Limited Time',
+                body: 'Exclusive offer ends soon'
+            }
+        ];
+
+        function showNotification() {
+            const notification = notifications[Math.floor(Math.random() * notifications.length)];
+            const time = 'now';
+
+            const notifEl = document.createElement('div');
+            notifEl.className = 'notification';
+            notifEl.innerHTML = `
+                <div class="notification-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M16 8l-6 6-3-3" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="notification-content">
+                    <div class="notification-header">
+                        <span class="notification-app">${notification.appName}</span>
+                        <span class="notification-time">${time}</span>
+                    </div>
+                    <div class="notification-title">${notification.title}</div>
+                    <div class="notification-body">${notification.body}</div>
+                </div>
+            `;
+
+            document.body.appendChild(notifEl);
+
+            setTimeout(() => notifEl.classList.add('show'), 100);
+
+            setTimeout(() => {
+                notifEl.classList.remove('show');
+                setTimeout(() => notifEl.remove(), 500);
+            }, 6000);
+        }
+
+        setTimeout(() => {
+            showNotification();
+            setInterval(showNotification, 20000 + Math.random() * 10000);
+        }, 8000);
+    </script>
+</body>
+</html>
