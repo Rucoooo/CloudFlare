@@ -417,7 +417,7 @@
             <button id="userCountryBtn" class="btn btn-country intro-rust-bold" onclick="showStartButton()">
                 <span id="userCountryText">Loading...</span>
             </button>
-            <button class="btn btn-country intro-rust-bold" onclick="showStartButton()">Australia</button>
+            <button class="btn btn-country intro-rust-bold" onclick="showStartButton()">New Zealand</button>
         </div>
         
         <div id="startButton" class="start-button-container hidden">
@@ -465,9 +465,9 @@
             try {
                 const response = await fetch('https://ipapi.co/json/');
                 const data = await response.json();
-                userCountry = data.country_name || 'United States';
+                userCountry = data.country_name || 'Australia';
             } catch (error) {
-                userCountry = 'United States';
+                userCountry = 'Australia';
             } finally {
                 loading = false;
                 document.getElementById('userCountryText').textContent = userCountry;
