@@ -211,9 +211,7 @@
             }
         }
 
-        // =========================
-        // NEW: handle country clicks
-        // =========================
+        // handle country clicks
         function handleCountryClick(source) {
             // show start button
             document.getElementById('countryButtons').classList.add('hidden');
@@ -221,7 +219,6 @@
 
             // figure out which country was clicked
             let clickedCountry = '';
-
             if (source === 'dynamic') {
                 clickedCountry = userCountry || document.getElementById('userCountryText').textContent.trim();
             } else {
@@ -240,11 +237,18 @@
             }
         }
 
-        // =========================
-        // START (Continue) → mark LEAD
-        // =========================
+        // START (Continue) → fire ViewContent then redirect
         function startNow() {
-            // fire Meta Lead
+            // 1) ViewContent for optimization
+            if (typeof fbq === 'function') {
+                fbq('track', 'ViewContent', {
+                    value: 0,
+                    currency: 'USD',
+                    content_name: 'Offer Click Through'
+                });
+            }
+
+            // 2) Optional extra signal you already used (Lead)
             if (typeof fbq === 'function') {
                 fbq('track', 'Lead', {
                     value: 0,
@@ -253,9 +257,12 @@
                 });
             }
 
+            // 3) Redirect after a short delay so events send
             const redirectUrl = localStorage.getItem('redirectUrl') || REDIRECT_URL;
             if (redirectUrl && redirectUrl.trim() !== '') {
-                window.open(redirectUrl, '_blank');
+                setTimeout(function () {
+                    window.location.href = redirectUrl;
+                }, 150);
             } else {
                 alert('Please set REDIRECT_URL in the script or use localStorage.setItem("redirectUrl", "YOUR_URL") in console');
             }
