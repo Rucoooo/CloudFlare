@@ -12,8 +12,9 @@
         }
 
         body {
-            font-family: -Playful Rewards-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", system-ui, sans-serif;
-            background: #000;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", system-ui, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-attachment: fixed;
             color: #fff;
             min-height: 100vh;
             min-height: 100dvh;
@@ -31,6 +32,18 @@
             bottom: 0;
         }
 
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(138, 43, 226, 0.4) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(147, 51, 234, 0.3) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
         .modal {
             background: rgba(28, 28, 30, 0.85);
             backdrop-filter: blur(20px);
@@ -39,10 +52,11 @@
             padding: 24px;
             max-width: 380px;
             width: 100%;
-            box-shadow: 
+            box-shadow:
                 0 8px 28px rgba(0, 0, 0, 0.6),
                 0 0 0 0.5px rgba(255, 255, 255, 0.06);
             position: relative;
+            z-index: 1;
         }
 
         .modal-header {
@@ -114,8 +128,8 @@
         }
 
         .option input[type="radio"]:checked + .option-label {
-            background: rgba(10, 132, 255, 0.2);
-            border-color: #007AFF;
+            background: rgba(138, 43, 226, 0.3);
+            border-color: #a855f7;
             color: #fff;
         }
 
@@ -125,13 +139,13 @@
         }
 
         .option input[type="radio"]:checked + .option-label:hover {
-            background: rgba(10, 132, 255, 0.25);
+            background: rgba(138, 43, 226, 0.4);
         }
 
         .submit-btn {
             width: 100%;
             padding: 14px 16px;
-            background: #007AFF;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border: none;
             border-radius: 24px;
             color: #fff;
@@ -141,18 +155,17 @@
             cursor: pointer;
             transition: all 0.15s ease-out;
             margin-top: 20px;
-            box-shadow: 0 1px 3px rgba(0, 122, 255, 0.18);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
         }
 
         .submit-btn:hover:not(:disabled) {
-            background: #0056CC;
             transform: translateY(-0.5px);
-            box-shadow: 0 3px 8px rgba(0, 122, 255, 0.28);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
         }
 
         .submit-btn:active:not(:disabled) {
             transform: scale(0.98);
-            box-shadow: 0 1px 3px rgba(0, 122, 255, 0.2);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
         }
 
         .submit-btn:disabled {
@@ -162,7 +175,6 @@
             box-shadow: none;
         }
 
-        /* HOW IT WORKS SCREEN STYLES */
         .how-it-works-screen {
             display: none;
             text-align: center;
@@ -207,7 +219,7 @@
         .step-number {
             width: 32px;
             height: 32px;
-            background: rgba(72, 72, 74, 1);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -217,6 +229,7 @@
             color: #fff;
             margin-right: 16px;
             flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
         }
 
         .step-content {
@@ -242,7 +255,7 @@
         .continue-btn {
             width: 100%;
             padding: 16px 20px;
-            background: #007AFF;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border: none;
             border-radius: 14px;
             color: #fff;
@@ -253,18 +266,16 @@
             transition: all 0.15s ease-out;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0, 122, 255, 0.18);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
         }
 
         .continue-btn:hover {
-            background: #0056CC;
             transform: translateY(-1px);
-            box-shadow: 0 3px 8px rgba(0, 122, 255, 0.28);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
         }
 
         .continue-btn:active {
             transform: translateY(0);
-            background: #004BB8;
         }
 
         .continue-btn::before {
@@ -283,7 +294,6 @@
             opacity: 1;
         }
 
-        /* Success screen styles */
         .success-screen {
             display: none;
             text-align: center;
@@ -294,14 +304,14 @@
             height: 48px;
             margin: 0 auto 16px;
             border-radius: 50%;
-            background: #007AFF;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 22px;
             font-weight: 700;
             color: #fff;
-            box-shadow: 0 2px 8px rgba(0, 122, 255, 0.25);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
         }
 
         .success-title {
@@ -324,7 +334,7 @@
         .reward-btn {
             width: 100%;
             padding: 14px 16px;
-            background: #007AFF;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border: none;
             border-radius: 24px;
             color: #fff;
@@ -333,21 +343,19 @@
             font-family: inherit;
             cursor: pointer;
             transition: all 0.15s ease-out;
-            box-shadow: 0 1px 3px rgba(0, 122, 255, 0.18);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
         }
 
         .reward-btn:hover {
-            background: #0056CC;
             transform: translateY(-0.5px);
-            box-shadow: 0 3px 8px rgba(0, 122, 255, 0.28);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
         }
 
         .reward-btn:active {
             transform: scale(0.98);
-            box-shadow: 0 1px 3px rgba(0, 122, 255, 0.2);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
         }
 
-        /* Hide/show screens */
         .survey-screen.hidden, .how-it-works-screen.hidden {
             display: none;
         }
@@ -356,7 +364,6 @@
             display: block;
         }
 
-        /* Entrance animation */
         .modal {
             animation: modalEnter 0.45s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
         }
@@ -372,7 +379,6 @@
             }
         }
 
-        /* Responsive adjustments */
         @media (max-width: 480px) {
             body {
                 padding: 16px;
@@ -442,7 +448,6 @@
 </head>
 <body>
     <div class="modal">
-        <!-- Survey Screen -->
         <div class="survey-screen" id="surveyScreen">
             <div class="modal-header">
                 <h1 class="modal-title">Playful Rewards Pay Eligibility Check</h1>
@@ -486,13 +491,12 @@
             </form>
         </div>
 
-        <!-- How It Works Screen -->
         <div class="how-it-works-screen" id="howItWorksScreen">
             <div class="how-it-works-header">
                 <h1 class="how-it-works-title">How It Works</h1>
                 <p class="how-it-works-subtitle">Get started in just three simple steps</p>
             </div>
-            
+
             <div class="steps-container">
                 <div class="step">
                     <div class="step-number">1</div>
@@ -501,7 +505,7 @@
                         <div class="step-description">Answer questions to confirm device compatibility</div>
                     </div>
                 </div>
-                
+
                 <div class="step">
                     <div class="step-number">2</div>
                     <div class="step-content">
@@ -509,7 +513,7 @@
                         <div class="step-description">Download selected apps to verify device compatibility</div>
                     </div>
                 </div>
-                
+
                 <div class="step">
                     <div class="step-number">3</div>
                     <div class="step-content">
@@ -518,11 +522,10 @@
                     </div>
                 </div>
             </div>
-            
+
             <button class="continue-btn" id="continueBtn">Continue</button>
         </div>
 
-        <!-- Success Screen -->
         <div class="success-screen" id="successScreen">
             <div class="success-icon">✓</div>
             <h1 class="success-title">Congratulations, you're eligible!</h1>
@@ -540,11 +543,10 @@
         const continueBtn = document.getElementById('continueBtn');
         const rewardBtn = document.getElementById('rewardBtn');
 
-        // Enable submit button when both questions are answered
         function checkFormValid() {
             const usageSelected = document.querySelector('input[name="usage"]:checked');
             const deviceSelected = document.querySelector('input[name="device"]:checked');
-            
+
             if (usageSelected && deviceSelected) {
                 submitBtn.disabled = false;
             } else {
@@ -552,29 +554,25 @@
             }
         }
 
-        // Add event listeners to all radio buttons
         document.querySelectorAll('input[type="radio"]').forEach(radio => {
             radio.addEventListener('change', checkFormValid);
         });
 
-        // Handle form submission with smooth transition to How It Works
         form.addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            // Fade out survey screen
+
             surveyScreen.style.transition = 'opacity 0.22s ease-out, transform 0.22s ease-out';
             surveyScreen.style.opacity = '0';
             surveyScreen.style.transform = 'scale(0.96)';
-            
+
             setTimeout(() => {
                 surveyScreen.classList.add('hidden');
                 howItWorksScreen.classList.add('show');
-                
-                // Fade in how it works screen
+
                 howItWorksScreen.style.opacity = '0';
                 howItWorksScreen.style.transform = 'scale(0.96)';
                 howItWorksScreen.style.transition = 'opacity 0.32s ease-out, transform 0.32s ease-out';
-                
+
                 requestAnimationFrame(() => {
                     howItWorksScreen.style.opacity = '1';
                     howItWorksScreen.style.transform = 'scale(1)';
@@ -582,27 +580,23 @@
             }, 220);
         });
 
-        // Handle continue button click (from How It Works to Success)
         continueBtn.addEventListener('click', function() {
-            // Add click feedback
             continueBtn.style.transform = 'scale(0.98)';
-            
+
             setTimeout(() => {
-                // Fade out how it works screen
                 howItWorksScreen.style.transition = 'opacity 0.22s ease-out, transform 0.22s ease-out';
                 howItWorksScreen.style.opacity = '0';
                 howItWorksScreen.style.transform = 'scale(0.96)';
-                
+
                 setTimeout(() => {
                     howItWorksScreen.classList.remove('show');
                     howItWorksScreen.classList.add('hidden');
                     successScreen.classList.add('show');
-                    
-                    // Fade in success screen
+
                     successScreen.style.opacity = '0';
                     successScreen.style.transform = 'scale(0.96)';
                     successScreen.style.transition = 'opacity 0.32s ease-out, transform 0.32s ease-out';
-                    
+
                     requestAnimationFrame(() => {
                         successScreen.style.opacity = '1';
                         successScreen.style.transform = 'scale(1)';
@@ -611,20 +605,14 @@
             }, 100);
         });
 
-        // Handle reward button click
         rewardBtn.addEventListener('click', function() {
-            // Add click feedback
             rewardBtn.style.transform = 'scale(0.96)';
             setTimeout(() => {
                 rewardBtn.style.transform = '';
-                
-                // Use the formatted subId with country code
-                const finalUrl = 'https://t.afftrackr.com/?ge4=j3yd7hZoO%2fKRX1YEz8JilYKd%2bapZX5JTvQJDRoz7h5U%3d&s1=' + encodeURIComponent('nov17lg_US');
-                window.location.href = finalUrl;
+                window.location.href = '/go';
             }, 120);
         });
 
-        // Add subtle pulse to submit button when enabled
         submitBtn.addEventListener('transitionend', function() {
             if (!this.disabled) {
                 this.style.animation = 'none';
@@ -634,5 +622,6 @@
             }
         });
     </script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"955a4581eba74285aba0d727d170cf9d","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"955a4581eba74285aba0d727d170cf9d","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfOrigin":true,"cfSpeedBrain":true}}}' crossorigin="anonymous"></script>
 </body>
+</html>
