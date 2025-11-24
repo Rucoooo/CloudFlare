@@ -1,40 +1,67 @@
 export default async function handler(req, res) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
+
   try {
-    const { event, properties, ttclid, test_event_code } = req.body;
+    const { event, properties = {}, ttclid, test_event_code } = req.body || {};
 
     if (!event) {
-      return res.status(400).json({ error: "Missing event name" });
+      return res.status(400).json({ error: 'Missing event name' });
     }
 
-    const pixel_id = process.env.TIKTOK_PIXEL_ID;
-    const access_token = process.env.TIKTOK_ACCESS_TOKEN;
+    const pixelCode = process.env.TIKTOK_PIXEL_ID;
+    const accessToken = process.env.TIKTOK_ACCESS_TOKEN;
 
+    if (!pixelCode || !accessToken) {
+      return res.status(500).json({ error: 'Missing TikTok env vars' });
+    }
+
+    // ==========================
+    // TikTok Events API Payload
+    // ==========================
     const payload = {
-      pixel_code: pixel_id,
-      event: event,
-      event_time: Math.floor(Date.now() / 1000),
-      context: {
-        ad: {
-          callback: ttclid || null,
-        },
-      },
-      properties: properties || {},
-      test_event_code: test_event_code || undefined
+      event_source: "web",
+      event_source_id: pixelCode,
+      test_event_code: test_event_code || undefined,
+      data: [
+        {
+          event: event,
+          event_time: Math.floor(Date.now() / 1000),
+          context: {
+            ad: {
+              callback: ttclid || undefined,
+            },
+            page: {
+              url: req.headers['referer'] || "",
+              user_agent: req.headers['user-agent'] || "",
+            }
+          },
+          properties: properties,
+        }
+      ]
     };
 
-    const tiktokRes = await fetch("https://business-api.tiktok.com/open_api/v1.3/event/track/", {
-      method: "POST",
-      headers: {
-        "Access-Token": access_token,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(payload)
-    });
+    const tiktokRes = await fetch(
+      "https://business-api.tiktok.com/open_api/v1.3/event/track/",
+      {
+        method: "POST",
+        headers: {
+          "Access-Token": accessToken,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      }
+    );
 
     const data = await tiktokRes.json();
-    res.status(200).json({ success: true, tiktok: data });
-  } catch (e) {
-    console.error("Server error:", e);
-    res.status(500).json({ error: "Server error" });
+
+    return res
+      .status(tiktokRes.ok ? 200 : 500)
+      .json({ success: tiktokRes.ok, tiktok: data });
+
+  } catch (err) {
+    console.error("Server Error:", err);
+    return res.status(500).json({ error: "Server error" });
   }
 }
