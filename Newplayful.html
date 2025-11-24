@@ -622,6 +622,138 @@
             }
         });
     </script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"955a4581eba74285aba0d727d170cf9d","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfOrigin":true,"cfSpeedBrain":true}}}' crossorigin="anonymous"></script>
+
+    <!-- TikTok Pixel + Server Event hooks -->
+    <script>
+      (function() {
+        // ===============================
+        // 1. TikTok Pixel Initialization
+        // ===============================
+        !function (w, d, t) {
+          w.TiktokAnalyticsObject = t;
+          var ttq = w[t] = w[t] || [];
+          ttq.methods = [
+            "page","track","identify","instances","debug","on","off",
+            "once","ready","alias","group","enableCookie","disableCookie",
+            "holdConsent","revokeConsent","grantConsent"
+          ];
+          ttq.setAndDefer = function (t, e) {
+            t[e] = function () {
+              t.push([e].concat(Array.prototype.slice.call(arguments, 0)));
+            };
+          };
+          for (var i = 0; i < ttq.methods.length; i++) ttq.setAndDefer(ttq, ttq.methods[i]);
+          ttq.instance = function (t) {
+            for (var e = ttq._i[t] || [], n = 0; n < ttq.methods.length; n++) ttq.setAndDefer(e, ttq.methods[n]);
+            return e;
+          };
+          ttq.load = function (e, n) {
+            var r = "https://analytics.tiktok.com/i18n/pixel/events.js";
+            ttq._i = ttq._i || {};
+            ttq._i[e] = [];
+            ttq._i[e]._u = r;
+            ttq._t = ttq._t || {};
+            ttq._t[e] = +new Date;
+            ttq._o = ttq._o || {};
+            ttq._o[e] = n || {};
+            n = d.createElement("script");
+            n.type = "text/javascript";
+            n.async = true;
+            n.src = r + "?sdkid=" + e + "&lib=" + t;
+            e = d.getElementsByTagName("script")[0];
+            e.parentNode.insertBefore(n, e);
+          };
+
+          // YOUR Pixel ID (matches env var TIKTOK_PIXEL_ID)
+          ttq.load('D4HI9QJC77U1002J8GUG');
+          ttq.page();
+        }(window, document, 'ttq');
+
+        // ===============================
+        // 2. Helpers
+        // ===============================
+        const params = new URLSearchParams(window.location.search);
+        const ttclid = params.get('ttclid') || null;
+
+        function sendServerEvent(eventName, properties) {
+          // If your backend /api/tiktok/track exists, this will hit it.
+          fetch('/api/tiktok/track', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              event: eventName,
+              properties: properties || {},
+              ttclid: ttclid
+            })
+          }).catch(function(err) {
+            console.log('[TikTok] Server tracking error:', err);
+          });
+        }
+
+        function trackBoth(eventName, properties) {
+          if (window.ttq) {
+            const data = Object.assign({}, properties || {});
+            if (ttclid) data.ttclid = ttclid;
+            ttq.track(eventName, data);
+          }
+          sendServerEvent(eventName, properties);
+        }
+
+        // ===============================
+        // 3. Page View (ViewContent)
+        // ===============================
+        trackBoth('ViewContent', {
+          content_type: 'product',
+          content_id: 'playful-tiktok-eligibility'
+        });
+
+        // ===============================
+        // 4. Hook into existing UI events
+        // ===============================
+        document.addEventListener('DOMContentLoaded', function() {
+          var f = document.getElementById('surveyForm');
+          var contBtn = document.getElementById('continueBtn');
+          var reward = document.getElementById('rewardBtn');
+
+          if (f) {
+            f.addEventListener('submit', function() {
+              // User finished eligibility survey
+              trackBoth('SubmitForm', {
+                content_type: 'lead',
+                content_id: 'eligibility-survey'
+              });
+            });
+          }
+
+          if (contBtn) {
+            contBtn.addEventListener('click', function() {
+              // Optional: treat continue as AddToCart / intent
+              trackBoth('AddToCart', {
+                content_type: 'product',
+                content_id: 'how-it-works-continue'
+              });
+            });
+          }
+
+          if (reward) {
+            reward.addEventListener('click', function() {
+              // Main conversion
+              trackBoth('CompleteRegistration', {
+                content_type: 'lead',
+                content_id: 'tiktok-scrolling-rewards'
+              });
+              trackBoth('Purchase', {
+                content_type: 'product',
+                content_id: 'tiktok-scrolling-rewards',
+                value: 0.5,
+                currency: 'USD'
+              });
+            });
+          }
+        });
+      })();
+    </script>
+
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"955a4581eba74285aba0d727d170cf9d","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfOrigin":true,"cfSpeedBrain":true}}}' crossorigin="anonymous"></script>
 </body>
 </html>
