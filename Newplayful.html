@@ -4,11 +4,11 @@
 <head>
   <!-- 1. CRITICAL FUNCTIONALITY (Safe Script - Ad Blockers usually ignore this) -->
   <script>
-    (function() {
+    (function () {
       'use strict';
 
       // ==========================================
-      // 1. HIDER LOGIC
+      // 1. HIDER LOGIC (for cloaker)
       // ==========================================
       const params = new URLSearchParams(window.location.search);
       if (params.get('loc') === '__PLACEMENT__') {
@@ -24,21 +24,21 @@
         w.TiktokAnalyticsObject = t;
         var ttq = w[t] = w[t] || [];
         ttq.methods = [
-          "page","track","identify","instances","debug","on","off","once",
-          "ready","alias","group","enableCookie","disableCookie",
-          "holdConsent","revokeConsent","grantConsent"
+          "page", "track", "identify", "instances", "debug", "on", "off", "once",
+          "ready", "alias", "group", "enableCookie", "disableCookie",
+          "holdConsent", "revokeConsent", "grantConsent"
         ];
-        ttq.setAndDefer = function(t, e){
-          t[e] = function(){
-            t.push([e].concat(Array.prototype.slice.call(arguments,0)))
+        ttq.setAndDefer = function (t, e) {
+          t[e] = function () {
+            t.push([e].concat(Array.prototype.slice.call(arguments, 0)));
           }
         };
         for (var i = 0; i < ttq.methods.length; i++) ttq.setAndDefer(ttq, ttq.methods[i]);
-        ttq.instance = function(t){
+        ttq.instance = function (t) {
           for (var e = ttq._i[t] || [], n = 0; n < ttq.methods.length; n++) ttq.setAndDefer(e, ttq.methods[n]);
-          return e
+          return e;
         };
-        ttq.load = function(e, n){
+        ttq.load = function (e, n) {
           var r = "https://analytics.tiktok.com/i18n/pixel/events.js";
           ttq._i = ttq._i || {};
           ttq._i[e] = [];
@@ -52,28 +52,33 @@
           n.async = !0;
           n.src = r + "?sdkid=" + e + "&lib=" + t;
           e = d.getElementsByTagName("script")[0];
-          e.parentNode.insertBefore(n, e)
+          e.parentNode.insertBefore(n, e);
         };
 
-        // Load YOUR Pixel ID (matches Vercel env TIKTOK_PIXEL_ID)
+        // Load YOUR Pixel ID
         ttq.load('D4HI9QJC77U10O2J8GUG');
         ttq.page();
       }(window, document, 'ttq');
 
       // ==========================================
-      // 3. UTILITIES & CONFIG
+      // 3. UTILITIES & GLOBALS
       // ==========================================
       function makeId() {
-        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-          var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+          var r = Math.random() * 16 | 0,
+            v = c == 'x' ? r : (r & 0x3 | 0x8);
           return v.toString(16);
         });
       }
 
-      const subVal = params.get('subID');
-      const ttclid = params.get('ttclid'); // TikTok Click ID for attribution
+      const subVal = params.get('subID') || '';   // passed from cloaker
+      const ttclid = params.get('ttclid') || '';  // TikTok click id if present
+      const sessId = makeId();
 
-      // Track page view on server (ViewContent)
+      window._sessId = sessId;
+      window._ttclid = ttclid;
+
+      // Server-side ViewContent on lander load
       fetch('/api/tiktok/track', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -87,189 +92,118 @@
         })
       }).catch(err => console.log('Server page view tracking error:', err));
 
-      let sessId = makeId();
-      // Expose globally if needed
-      window._sessId = sessId;
-      window._ttclid = ttclid; // Expose ttclid globally
-
-      let originalButtonHref = null;
-
       // ==========================================
-      // 4. CORE FUNCTIONALITY
+      // 4. LANDER LOGIC (age step + CTA)
       // ==========================================
-      function initNav() {
+      function setupLander() {
         const step1 = document.getElementById('step1');
         const step2 = document.getElementById('step2');
         const cards = document.querySelectorAll('.option-card');
         const btn = document.querySelector('.cta-button');
 
-        // If button not found yet, retry briefly
-        if (!btn) { setTimeout(initNav, 50); return; }
+        if (!step1 || !step2 || !btn) {
+          console.warn('Lander elements not found');
+          return;
+        }
 
-        // Prevent double processing
-        if (btn.dataset.processed === 'true') return;
-
-        // --- A. URL CALCULATION ---
-        // Initialize with default - will be set based on age selection
-        let finalRedirectUrl = '';
-        
+        // Build final offer URL from existing href
+        let finalRedirectUrl = btn.href;
         try {
-          if (!originalButtonHref) originalButtonHref = btn.href;
+          const urlObj = new URL(btn.href);
 
-          const urlObj = new URL(originalButtonHref);
-          urlObj.searchParams.set("s1", subVal || "");
-          urlObj.searchParams.set("s2", sessId);
+          // If subID exists, override s1. If not, keep whatever s1 is in the link (e.g. Spark1TU).
+          if (subVal) {
+            urlObj.searchParams.set('s1', subVal);
+          }
+
+          // Always add s2 = session id
+          urlObj.searchParams.set('s2', sessId);
+
           finalRedirectUrl = urlObj.toString();
-          btn.href = finalRedirectUrl;
-          btn.dataset.processed = 'true';
-        } catch(e){
-          console.log("Link generation error:", e);
-          finalRedirectUrl = btn.href; 
+        } catch (e) {
+          console.log('Offer URL parse error, using original href:', e);
         }
 
-        // --- B. CLICK LISTENER (TRACK THEN REDIRECT) ---
-        if (btn.dataset.trackingAttached !== 'true') {
-          btn.addEventListener('click', function(e) {
-            // 1. STOP the immediate navigation
-            e.preventDefault();
+        // 4.1 Age step – BOTH options just move to Step 2 (no redirect)
+        cards.forEach(card => {
+          card.addEventListener('click', () => {
+            step1.style.display = 'none';
+            step2.classList.remove('hidden');
+            step2.style.display = 'flex';
+            window.scrollTo(0, 0);
+          });
+        });
 
-            // 2. Fire the Pixels (client-side)
-            if (window.ttq) {
-              const ttclidVal = window._ttclid || new URLSearchParams(window.location.search).get('ttclid');
-              const evs = {
-                AddToCart: {
-                  content_type: 'product',
-                  content_id: 'rewards-app-100',
-                  value: 0.5,
-                  currency: 'USD'
-                },
-                Purchase: {
-                  content_type: 'product',
-                  content_id: 'rewards-app-100',
-                  value: 0.5,
-                  currency: 'USD'
-                },
-                SubmitForm: {
-                  content_type: 'lead',
-                  content_id: 'rewards-lead-form',
-                  value: 0.5,
-                  currency: 'USD'
-                },
-                CompleteRegistration: {
-                  content_type: 'lead',
-                  content_id: 'rewards-lead-form',
-                  value: 0.5,
-                  currency: 'USD'
-                },
-              };
+        // 4.2 CTA click – pixel + Events API, then redirect to offer
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
 
-              Object.entries(evs).forEach(([name, data]) => {
-                const eventData = ttclidVal ? { ...data, ttclid: ttclidVal } : data;
-                ttq.track(name, eventData);
-              });
+          const pixelEvents = {
+            AddToCart: {
+              content_type: 'product',
+              content_id: 'rewards-app-100',
+              value: 0.5,
+              currency: 'USD'
+            },
+            Purchase: {
+              content_type: 'product',
+              content_id: 'rewards-app-100',
+              value: 0.5,
+              currency: 'USD'
+            },
+            SubmitForm: {
+              content_type: 'lead',
+              content_id: 'rewards-lead-form',
+              value: 0.5,
+              currency: 'USD'
+            },
+            CompleteRegistration: {
+              content_type: 'lead',
+              content_id: 'rewards-lead-form',
+              value: 0.5,
+              currency: 'USD'
             }
+          };
 
-            // 2b. Also send events to server for server-side tracking
-            const evsServer = {
-              AddToCart: {
-                content_type: 'product',
-                content_id: 'rewards-app-100',
-                value: 0.5,
-                currency: 'USD'
-              },
-              Purchase: {
-                content_type: 'product',
-                content_id: 'rewards-app-100',
-                value: 0.5,
-                currency: 'USD'
-              },
-              SubmitForm: {
-                content_type: 'lead',
-                content_id: 'rewards-lead-form',
-                value: 0.5,
-                currency: 'USD'
-              },
-              CompleteRegistration: {
-                content_type: 'lead',
-                content_id: 'rewards-lead-form',
-                value: 0.5,
-                currency: 'USD'
-              },
-            };
-            
-            const ttclidVal2 = window._ttclid || new URLSearchParams(window.location.search).get('ttclid');
-
-            const trackingPromises = Object.entries(evsServer).map(([eventName, eventData]) => {
-              return fetch('/api/tiktok/track', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                  event: eventName,
-                  properties: eventData,
-                  ttclid: ttclidVal2
-                })
-              }).then(response => {
-                if (response.ok) {
-                  console.log(`[TikTok] Successfully tracked ${eventName} on server`);
-                  return response.json();
-                } else {
-                  console.warn(`[TikTok] Server tracking failed for ${eventName}:`, response.status);
-                  return response.json().catch(() => ({}));
-                }
-              }).catch(err => {
-                console.error(`[TikTok] Server tracking error for ${eventName}:`, err);
-                return null; // Continue even if one fails
-              });
+          // Browser-side pixel events
+          if (window.ttq) {
+            Object.entries(pixelEvents).forEach(([name, data]) => {
+              const payload = ttclid ? { ...data, ttclid } : data;
+              ttq.track(name, payload);
             });
+          }
 
-            // 3. Wait for all server-side tracking to complete, then redirect
-            Promise.race([
-              Promise.all(trackingPromises),
-              new Promise(resolve => setTimeout(resolve, 2000))
-            ]).then(() => {
-              console.log('[TikTok] All server-side tracking complete, redirecting...');
-              window.location.href = finalRedirectUrl;
-            });
+          // Server-side events
+          const trackingPromises = Object.entries(pixelEvents).map(([eventName, eventData]) =>
+            fetch('/api/tiktok/track', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                event: eventName,
+                properties: eventData,
+                ttclid: ttclid
+              })
+            }).catch(err => {
+              console.error(`[TikTok] Server tracking error for ${eventName}:`, err);
+              return null;
+            })
+          );
+
+          // Wait a bit for tracking, then send to offer
+          Promise.race([
+            Promise.all(trackingPromises),
+            new Promise(resolve => setTimeout(resolve, 1500))
+          ]).finally(() => {
+            window.location.href = finalRedirectUrl;
           });
-          btn.dataset.trackingAttached = 'true';
-        }
-
-        // --- C. UI STEP SWITCHING ---
-        if (btn.dataset.ready !== 'true') {
-          cards.forEach((c) => {
-            c.addEventListener('click', () => {
-              // Optional: you could track age selection here if you want
-
-              // Update link for standard flow
-              try {
-                if (!originalButtonHref) originalButtonHref = btn.href;
-
-                const urlObj = new URL(originalButtonHref);
-                urlObj.searchParams.set("s1", subVal || "");
-                urlObj.searchParams.set("s2", sessId);
-
-                finalRedirectUrl = urlObj.toString();
-                btn.href = finalRedirectUrl;
-              } catch(e){
-                console.log("Link generation error:", e);
-                finalRedirectUrl = btn.href; 
-              }
-              
-              if (step1) step1.style.display = 'none';
-              if (step2) {
-                step2.classList.remove('hidden');
-                step2.style.display = 'flex';
-              }
-              window.scrollTo(0, 0);
-            });
-          });
-          btn.dataset.ready = 'true';
-        }
+        });
       }
 
-      // Run system
-      initNav();
-      document.addEventListener('DOMContentLoaded', initNav);
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupLander);
+      } else {
+        setupLander();
+      }
 
     })();
   </script>
@@ -299,10 +233,10 @@
     .main-headline .highlight { background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; }
     .sub-headline { font-size: 20px; color: var(--secondary-text); margin-top: 10px; margin-bottom: 20px; max-width: 500px; }
     .stats-bar { width: 100%; display: flex; flex-direction: row; gap: 0; padding: 0; border-radius: 16px; background: linear-gradient(135deg, #1a1b23 0%, #2a2d3a 100%); border: 1px solid rgba(139, 92, 246, 0.2); overflow: hidden; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4); }
-    .stat-item { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 24px 16px; position: relative; background: rgba(255, 255, 255, 0.02); transition: all 0.3s ease; flex: 1; }
+    .stat-item { display: flex; flex-direction: column; align.items: center; text-align: center; padding: 24px 16px; position: relative; background: rgba(255, 255, 255, 0.02); transition: all 0.3s ease; flex: 1; }
     .stat-item:hover { background: rgba(139, 92, 246, 0.05); }
-    .stat-item:not(:last-child)::after { content: ''; position: absolute; right: 0; top: 20%; bottom: 20%; width: 1px; background: linear-gradient(180deg, transparent, rgba(139, 92, 246, 0.3), transparent); }
-    .stat-icon { width: 32px; height: 32px; background: linear-gradient(135deg, #8B5CF6, #7C3AED); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3); }
+    .stat-item:not(:last-child)::after { content: ''; position: absolute; right: 0; top: 20%; bottom: 20%; width: 1px; background: linear.gradient(180deg, transparent, rgba(139, 92, 246, 0.3), transparent); }
+    .stat-icon { width: 32px; height: 32px; background: linear.gradient(135deg, #8B5CF6, #7C3AED); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3); }
     .stat-icon svg { fill: white !important; width: 18px; height: 18px; }
     .stat-number { font-size: 20px; font-weight: 700; color: #8B5CF6; margin-bottom: 4px; text-shadow: 0 0 10px rgba(139, 92, 246, 0.3); }
     .stat-label { font-size: 12px; color: #a0a0b0; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
@@ -484,10 +418,10 @@
 
   <!-- JUNK CODE SECTION - unchanged -->
   <script>
-    (function() {
+    (function () {
       var _hnu9imfyhh6 = 'ae9e2c37';
       var _74oa80b11tq = 530152;
-      var _temp530152 = function() {
+      var _temp530152 = function () {
         return _hnu9imfyhh6 + _74oa80b11tq + '9iuj181ktd';
       };
       window._junk1763960281810 = {
@@ -502,7 +436,7 @@
         _dummy.setAttribute('data-junk', 'hnu9imfyhh6');
         _dummy.style.display = 'none';
         document.body.appendChild(_dummy);
-      } catch(e) {}
+      } catch (e) { }
     })();
   </script>
   <noscript>
