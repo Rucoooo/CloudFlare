@@ -17,15 +17,33 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: 'Missing TikTok env vars' });
     }
 
-    // Ensure content_id is never empty (TikTok warning fix)
-    const propsWithId = { ...properties };
-    if (
-      !propsWithId.content_id ||
-      (typeof propsWithId.content_id === 'string' &&
-        propsWithId.content_id.trim().length === 0)
-    ) {
-      propsWithId.content_id = 'landing-page';
-    }
+    // ====== normalize properties / content_id =========
+    const rawContentId =
+      typeof properties.content_id === 'string'
+        ? properties.content_id.trim()
+        : '';
+
+    const contentId = rawContentId || 'landing-page';
+    const contentType = properties.content_type || 'product';
+    const value = 0.5;              // <--- always $0.50
+    const currency = properties.currency || 'USD';
+
+    // final props we send to TikTok
+    const finalProps = {
+      ...properties,
+      content_id: contentId,
+      content_type: contentType,
+      value,                        // 0.50
+      currency,
+      contents: [
+        {
+          content_id: contentId,
+          content_type: contentType,
+          price: value,             // 0.50
+          quantity: 1,
+        },
+      ],
+    };
 
     // ==========================
     // TikTok Events API Payload
@@ -47,7 +65,7 @@ export default async function handler(req, res) {
               user_agent: req.headers['user-agent'] || '',
             },
           },
-          properties: propsWithId,
+          properties: finalProps,
         },
       ],
     };
