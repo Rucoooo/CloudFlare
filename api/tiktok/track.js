@@ -17,11 +17,21 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: 'Missing TikTok env vars' });
     }
 
+    // Ensure content_id is never empty (TikTok warning fix)
+    const propsWithId = { ...properties };
+    if (
+      !propsWithId.content_id ||
+      (typeof propsWithId.content_id === 'string' &&
+        propsWithId.content_id.trim().length === 0)
+    ) {
+      propsWithId.content_id = 'landing-page';
+    }
+
     // ==========================
     // TikTok Events API Payload
     // ==========================
     const payload = {
-      event_source: "web",
+      event_source: 'web',
       event_source_id: pixelCode,
       test_event_code: test_event_code || undefined,
       data: [
@@ -33,22 +43,22 @@ export default async function handler(req, res) {
               callback: ttclid || undefined,
             },
             page: {
-              url: req.headers['referer'] || "",
-              user_agent: req.headers['user-agent'] || "",
-            }
+              url: req.headers['referer'] || '',
+              user_agent: req.headers['user-agent'] || '',
+            },
           },
-          properties: properties,
-        }
-      ]
+          properties: propsWithId,
+        },
+      ],
     };
 
     const tiktokRes = await fetch(
-      "https://business-api.tiktok.com/open_api/v1.3/event/track/",
+      'https://business-api.tiktok.com/open_api/v1.3/event/track/',
       {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Access-Token": accessToken,
-          "Content-Type": "application/json",
+          'Access-Token': accessToken,
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(payload),
       }
@@ -59,9 +69,8 @@ export default async function handler(req, res) {
     return res
       .status(tiktokRes.ok ? 200 : 500)
       .json({ success: tiktokRes.ok, tiktok: data });
-
   } catch (err) {
-    console.error("Server Error:", err);
-    return res.status(500).json({ error: "Server error" });
+    console.error('Server Error:', err);
+    return res.status(500).json({ error: 'Server error' });
   }
 }
