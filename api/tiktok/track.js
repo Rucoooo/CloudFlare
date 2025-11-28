@@ -25,7 +25,7 @@ export default async function handler(req, res) {
 
     const contentId = rawContentId || 'landing-page';
     const contentType = properties.content_type || 'product';
-    const value = 0.5;              // <--- always $0.50
+    const value = 0.2;              // <--- always $0.20
     const currency = properties.currency || 'USD';
 
     // final props we send to TikTok
